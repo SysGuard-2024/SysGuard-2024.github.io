@@ -1,0 +1,131 @@
+{
+  "resourceName": "switch",
+  "resourceType": "device",
+  "resourceDesc": "switch",
+  "attributes": [
+    {
+      "position": "Specific deployment locations",
+      "attrDesc": "Location of the environment in which the switch is deployed",
+      "attrType": "POSITION"
+    },
+    {
+      "state": "State of the switch",
+      "attrDesc": "State of the switch",
+      "attrType": "boolean"
+    }
+  ],
+  "constraint": {
+    "temporal": "",
+    "spatial": ""
+  },
+  "commands": [
+    {
+      "commandName": "stateChange",
+      "description": "Setting the state of the switch",
+      "protocal": "HTTP",
+      "precondition": {
+        "description": ""
+      },
+      "effect": {
+        "description": "Change of state of the switch"
+      },
+      "input": [
+        {
+          "name": "state",
+          "type": "boolean",
+          "unit": "",
+          "description": "State of the target switch"
+        }
+      ],
+      "result": {
+        "description": "Change of state of the switch",
+        "retuenData": [
+          {
+            "name": "changeFinish",
+            "type": "bool",
+            "unit": "",
+            "description": "Returns change complete or not complete, 0 for not complete, 1 for complete"
+          }
+        ]
+      }
+    }
+  ],
+  "query": [
+    {
+      "queryName": "attributesQuery",
+      "protocal": "HTTP",
+      "description": "Query directives for querying properties",
+      "input": [],
+      "result": {
+        "description": "Returns the attribute data of the switch",
+        "returnData": [
+          {
+            "position": "Specific deployment locations",
+            "attrDesc": "Location of the environment in which the switch is deployed",
+            "attrType": "POSITION"
+          },
+          {
+            "state": "State of the switch",
+            "attrDesc": "State of the switch",
+            "attrType": "boolean"
+          }
+        ]
+      }
+    },
+    {
+      "queryName": "historyStateQuery",
+      "protocal": "HTTP",
+      "description": "Query command to query historical data for a specified period of time",
+      "input": [
+        {
+          "name": "startTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Starting moment of historical data query"
+        },
+        {
+          "name": "endTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "End moment of historical data query"
+        }
+      ],
+      "result": {
+        "description": "Returns historical data for a specified period of time",
+        "returnData": [
+          {
+            "name": "State of the switch",
+            "description": "State of the switch",
+            "unit": "",
+            "type": "boolean"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "eventName": "stateChange",
+      "description": "change of state",
+      "protocal": "MQTT",
+      "payload": {
+        "payloadName": "state",
+        "description": "Current state of the switch",
+        "payloadData": [
+          {
+            "name": "state",
+            "type": "boolean",
+            "unit": "",
+            "description": "State of the switch"
+          },
+          {
+            "name": "timeStamp",
+            "type": "string",
+            "unit": "",
+            "description": "timestamp"
+          }
+        ]
+      }
+    }
+  ]
+}

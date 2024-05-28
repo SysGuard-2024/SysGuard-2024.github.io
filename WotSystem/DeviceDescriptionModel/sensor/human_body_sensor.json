@@ -1,0 +1,80 @@
+{
+  "resourceName": "HumanBodySensor",
+  "resourceType": "sensor",
+  "resourceDesc": "Body sensors to sense body movement",
+  "attributes": [
+    {
+      "attrName": "position",
+      "attrDesc": "Location where body sensors are deployed",
+      "attrType": "POSITION"
+    }
+  ],
+  "constraint": {
+    "temporal": "",
+    "spatial": ""
+  },
+  "commands": [],
+  "query": [
+    {
+      "queryName": "humanMotionRecordQuery",
+      "protocal": "MQTT",
+      "description": "Query the history of sensors sensing that someone is present",
+      "input": [
+        {
+          "name": "startTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Starting moments of historical human perception queries"
+        },
+        {
+          "name": "endTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Ending moments of historical human perception queries"
+        }
+      ],
+      "result": {
+        "description": "Return to historical perceptual data",
+        "returnData": [
+          {
+            "name": "humanMotionRecord",
+            "type": "string",
+            "unit": "",
+            "description": "Recording Historical Perception Data with Strings"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "eventName": "humanCloseEvent",
+      "description": "Detecting a person approaching the sensor",
+      "protocal": "MQTT",
+      "payload": {
+        "payloadName": "humanClose",
+        "description": "Returns sensing data that detects human proximity",
+        "payloadData": [
+          {
+            "name": "timeStamp",
+            "type": "string",
+            "unit": "",
+            "description": "Sensing event timestamps"
+          },
+          {
+            "name": "location",
+            "type": "string",
+            "unit": "",
+            "description": "Capture the location information of the image data"
+          },
+          {
+            "name": "closeDistance",
+            "type": "string",
+            "unit": "",
+            "description": "Human proximity to the sensor"
+          }
+        ]
+      }
+    }
+  ]
+}

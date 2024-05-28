@@ -1,0 +1,150 @@
+{
+  "resourceName": "smartDoor",
+  "resourceType": "device",
+  "resourceDesc": "Smart doors, used to provide environmental video and image surveillance data",
+  "attributes": [
+    {
+      "position": "Specific deployment locations",
+      "attrDesc": "Locations where smart doors are deployed",
+      "attrType": "POSITION"
+    }
+  ],
+  "constraint": {
+    "temporal": "",
+    "spatial": ""
+  },
+  "commands": [
+    {
+      "commandName": "doorSwitch",
+      "description": "Opening and Closing of the smart door",
+      "protocal": "MQTT",
+      "precondition": {
+        "description": ""
+      },
+      "effect": {
+        "description": "The state of the smart door changes"
+      },
+      "input": [
+        {
+          "name": "doorState",
+          "type": "string",
+          "unit": "",
+          "description": "State of the smart door, open or closed"
+        }
+      ],
+      "result": {
+        "description": "The state of the smart door changes",
+        "retuenData": [
+          {
+            "name": "doorSwitchFinish",
+            "type": "bool",
+            "unit": "",
+            "description": "Returns switching complete or not complete, 0 is not complete, 1 is complete"
+          }
+        ]
+      }
+    }
+  ],
+  "query": [
+    {
+      "queryName": "DoorStateQuery",
+      "protocal": "HTTP",
+      "description": "Query command for querying the status of a smart door",
+      "input": [],
+      "result": {
+        "description": "Return to the state of the smart door",
+        "returnData": [
+          {
+            "name": "doorState",
+            "type": "string",
+            "unit": "",
+            "description": "The state of the smart door"
+          }
+        ]
+      }
+    },
+    {
+      "queryName": "historySwitchQuery",
+      "protocal": "HTTP",
+      "description": "Querying information about doors opened and closed during a specific time period",
+      "input": [
+        {
+          "name": "startTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Starting moment of the query"
+        },
+        {
+          "name": "endTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Ending moment of the query"
+        }
+      ],
+      "result": {
+        "description": "Returns door opening and closing data for a specified period of time",
+        "returnData": [
+          {
+            "name": "historySwitch",
+            "type": "array",
+            "unit": "",
+            "description": "Return to Historical Door Opening and Closing Data"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "eventName": "lowBatteryEvent",
+      "description": "Detecting the event that a smart door is low on power and needs to be recharged",
+      "protocal": "HTTP",
+      "payload": {
+        "payloadName": "lowBattery",
+        "description": "Trigger event for low battery on smart door",
+        "payloadData": [
+          {
+            "name": "lowBattery",
+            "type": "string",
+            "unit": "",
+            "description": "Trigger message for low battery on smart door"
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "OpenDoorEvent",
+      "description": "Open the door",
+      "protocal": "MQTT",
+      "payload": {
+        "payloadName": "OpenDoor",
+        "description": "Returns the open door event",
+        "payloadData": [
+          {
+            "name": "OpenDoorState",
+            "type": "string",
+            "unit": "",
+            "description": "Open door status"
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "CloseDoorEvent",
+      "description": "Close the door",
+      "protocal": "HTTP",
+      "payload": {
+        "payloadName": "CloseFridge",
+        "description": "Returns the close door event",
+        "payloadData": [
+          {
+            "name": "CloseFridgeState",
+            "type": "string",
+            "unit": "",
+            "description": "Close door status"
+          }
+        ]
+      }
+    }
+  ]
+}

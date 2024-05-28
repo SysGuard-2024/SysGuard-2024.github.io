@@ -1,0 +1,197 @@
+{
+  "resourceName": "TVDevice",
+  "resourceType": "device",
+  "resourceDesc": "Television, providing audio and video, casting screen and other functions",
+  "attributes": [
+    {
+      "attrName": "position",
+      "attrDesc": "Location of television deployment",
+      "attrType": "POSITION"
+    }
+  ],
+  "constraint": {
+    "temporal": "",
+    "spatial": "indoors"
+  },
+  "commands": [
+    {
+      "commandName": "videoPlay",
+      "description": "Functions for video playback",
+      "protocal": "HTTP",
+      "precondition": {
+        "description": "TV wifi signal is fine"
+      },
+      "effect": {
+        "description": "Video Playback"
+      },
+      "input": [
+        {
+          "name": "videoUrl",
+          "type": "string",
+          "unit": "",
+          "description": "Url address of the video to be played"
+        }
+      ],
+      "result": {
+        "description": "Video starts playing",
+        "retuenData": [
+          {
+            "name": "videoPlayFinish",
+            "type": "bool",
+            "unit": "",
+            "description": "Returns whether the video is playing normally, 0 for not playing normally, 1 for normal playback whether the video is playing normally, 0 for not playing normally, 1 for normal playback为未正常播放，1为正常播放"
+          }
+        ]
+      }
+    },
+    {
+      "commandName": "projection",
+      "description": "projection function",
+      "protocal": "HTTP",
+      "precondition": {
+        "description": "TV needs to be on the same LAN as the projection equipment"
+      },
+      "effect": {
+        "description": "There's a projected video playing."
+      },
+      "input": [
+        {
+          "name": "projectVideoPlatform",
+          "type": "string",
+          "unit": "",
+          "description": "Video platforms used for projected video"
+        }
+      ],
+      "result": {
+        "description": "Projection complete",
+        "retuenData": [
+          {
+            "name": "projectVideoFinish",
+            "type": "bool",
+            "unit": "",
+            "description": "Returns whether the projection has started, 0 is not started, 1 is started"
+          }
+        ]
+      }
+    }
+  ],
+  "query": [
+    {
+      "queryName": "projectionPlatformQuery",
+      "protocal": "HTTP",
+      "description": "Check the video platforms supported by the device's projection function",
+      "input": [],
+      "result": {
+        "description": "Video platforms supported by the projection function",
+        "returnData": [
+          {
+            "name": "projectionPlatform",
+            "type": "string",
+            "unit": "",
+            "description": "Projection function List of supported projections"
+          }
+        ]
+      }
+    },
+    {
+      "queryName": "tvRecordQuery",
+      "protocal": "HTTP",
+      "description": "Check the history of TV opening and closing",
+      "input": [
+        {
+          "name": "startTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Starting moment of history search"
+        },
+        {
+          "name": "endTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Ending moment of history search"
+        }
+      ],
+      "result": {
+        "description": "History of TV opening and closing",
+        "returnData": [
+          {
+            "name": "boolStateRecord",
+            "type": "String",
+            "unit": "",
+            "description": "Record the history of TV opening and closing with a string"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "eventName": "noSingalEvent",
+      "description": "Event of detecting TV without wifi signal",
+      "protocal": "HTTP",
+      "payload": {
+        "payloadName": "noSingal",
+        "description": "Trigger event for TV without wifi signal",
+        "payloadData": [
+          {
+            "name": "noSingal",
+            "type": "string",
+            "unit": "",
+            "description": "Trigger message for TV no wifi signal failure"
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "tvOpenEvent",
+      "description": "The event of the TV being switched on",
+      "protocal": "HTTP",
+      "payload": {
+        "payloadName": "tvOpen",
+        "description": "The event of the TV being switched on",
+        "payloadData": [
+          {
+            "name": "tvOpen",
+            "type": "string",
+            "unit": "",
+            "description": "Message from the TV switch-on"
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "tvCloseEvent",
+      "description": "The event of the TV being switched off",
+      "protocal": "HTTP",
+      "payload": {
+        "payloadName": "tvClose",
+        "description": "The event of the TV being switched off",
+        "payloadData": [
+          {
+            "name": "tvClose",
+            "type": "string",
+            "unit": "",
+            "description": "Message from the TV switch-off"
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "projectionErrorEvent",
+      "description": "Events that detect projection faults",
+      "protocal": "HTTP",
+      "payload": {
+        "payloadName": "projectionError",
+        "description": "Trigger Events for Projection Failures Requiring Service",
+        "payloadData": [
+          {
+            "name": "needFixProjection",
+            "type": "string",
+            "unit": "",
+            "description": "Trigger messages for projection faults that need to be serviced"
+          }
+        ]
+      }
+    }
+  ]
+}

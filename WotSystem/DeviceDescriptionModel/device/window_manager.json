@@ -1,0 +1,138 @@
+{
+  "resourceName": "WindowManager",
+  "resourceType": "device",
+  "resourceDesc": "For opening and closing windows",
+  "attributes": [
+    {
+      "attrName": "position",
+      "attrDescription": "Installation position of window opener",
+      "attrType": "POSITION"
+    }
+  ],
+  "constraint": {
+    "temporal": "7:00-22:00",
+    "spatial": ""
+  },
+  "commands": [
+    {
+      "commandName": "openWindow",
+      "description": "Open the window",
+      "protocal": "HTTP",
+      "precondition": {
+        "description": "The windows need to be open"
+      },
+      "effect": {
+        "description": "The window was opened"
+      },
+      "input": [],
+      "result": {
+        "description": "Results of opening the window",
+        "returnData": [
+          {
+            "name": "isOpen",
+            "type": "bool",
+            "unit": "",
+            "description": "Were the windows opened"
+          }
+        ]
+      }
+    },
+    {
+      "commandName": "closeWindow",
+      "description": "Close the windows",
+      "protocal": "HTTP",
+      "precondition": {
+        "description": "Windows need to be closed."
+      },
+      "effect": {
+        "description": "The window was closed."
+      },
+      "input": [],
+      "result": {
+        "description": "Results of closing windows",
+        "returnData": [
+          {
+            "name": "isClose",
+            "type": "bool",
+            "unit": "",
+            "description": "Were the windows closed"
+          }
+        ]
+      }
+    }
+  ],
+  "query": [
+    {
+      "queryName": "windowStatusCurrent",
+      "description": "Current status of the window",
+      "protocal": "",
+      "input": [],
+      "result": {
+        "description": "Current status of the window",
+        "returnData": [
+          {
+            "name": "status",
+            "type": "int",
+            "unit": "",
+            "description": "Window status 0 for open, 1 for closed"
+          }
+        ]
+      }
+    },
+    {
+      "queryName": "windowStatusHistory",
+      "description": "Historical status of windows",
+      "protocal": "",
+      "input": [
+        {
+          "name": "startTime",
+          "type": "long",
+          "unit": "",
+          "description": "Start timestamp"
+        },
+        {
+          "name": "endTime",
+          "type": "long",
+          "unit": "",
+          "description": "End timestamp"
+        }
+      ],
+      "result": {
+        "description": "Historical status of windows",
+        "returnData": [
+          {
+            "name": "status",
+            "type": "array",
+            "unit": "",
+            "description": "Historical status of windows"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "eventName": "windowOpen",
+      "description": "The window was opened.",
+      "protocal": "AMQP",
+      "payload": {
+        "payloadName": "result",
+        "description": "Which window was opened",
+        "payloadData": [
+          {
+            "name": "window",
+            "type": "Object",
+            "unit": "",
+            "description": "Specific windows"
+          },
+          {
+            "name": "timestamp",
+            "type": "long",
+            "unit": "",
+            "description": "Time to open the window"
+          }
+        ]
+      }
+    }
+  ]
+}

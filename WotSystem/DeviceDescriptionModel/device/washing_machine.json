@@ -1,0 +1,155 @@
+{
+  "resourceName": "washingmachine",
+  "resourceType": "device",
+  "resourceDesc": "Intelligent washing machine that automatically washes, dries and sends completion events",
+  "attributes": [
+    {
+      "position": "bathroom",
+      "attrDesc": "",
+      "attrType": "POSITION"
+    }
+  ],
+  "constraint": {
+    "temporal": "",
+    "spatial": "indoor"
+  },
+  "commands": [
+    {
+      "commandName": "startwashing",
+      "description": "Start washing.",
+      "protocal": "HTTP",
+      "precondition": {
+        "description": "Washing machine door closed"
+      },
+      "effect": {
+        "description": "Cleaning completed"
+      },
+      "input": [
+        {
+          "name": "washingmode",
+          "type": "HANDWASH、QUICKWASH、COTTONS、SYNTHETICS",
+          "unit": "",
+          "description": "Choose different washing modes according to the material of the clothes"
+        },
+        {
+          "name": "duration",
+          "type": "int",
+          "unit": "minutes",
+          "description": "Setting the duration of cleaning"
+        }
+      ],
+      "result": {
+        "description": "Cleaning completed",
+        "retuenData": [
+          {
+            "name": "washingstatus",
+            "type": "bool",
+            "unit": "",
+            "description": "Whether the cleaning is completed, 0 is not completed, 1 is completed"
+          }
+        ]
+      }
+    }
+  ],
+  "query": [
+    {
+      "queryName": "realTimeWashingStatusQuery",
+      "protocal": "HTTP",
+      "description": "Query command to query the status of a real-time washing machine",
+      "input": [],
+      "result": {
+        "description": "Returns real-time washing machine status data",
+        "returnData": [
+          {
+            "name": "WashingStatus",
+            "type": "bool",
+            "unit": "",
+            "description": "Returns the status of the current washing machine state"
+          }
+        ]
+      }
+    },
+    {
+      "queryName": "WashingHistoryQuery",
+      "protocal": "HTTP",
+      "description": "Query command to query the number of laundry",
+      "input": {
+        "name": "duration",
+        "type": "int",
+        "unit": "minutes",
+        "description": "Enquiry Time Period"
+      },
+      "result": {
+        "description": "Returns the number of laundry trips in the query time period",
+        "returnData": [
+          {
+            "name": "WashingCount",
+            "type": "array",
+            "unit": "",
+            "description": "The number of laundry trips in the query time period"
+          }
+        ]
+      }
+    },
+    {
+      "queryName": "WashingprogressQuery",
+      "protocal": "HTTP",
+      "description": "Enquire about cleaning progress",
+      "input": [
+        {
+          "name": "",
+          "type": "",
+          "unit": "",
+          "description": ""
+        }
+      ],
+      "result": {
+        "description": "Return to Cleaning Progress",
+        "returnData": [
+          {
+            "name": "Washingprogress",
+            "type": "int",
+            "unit": "",
+            "description": "Returns the percentage of cleaning progress"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "eventName": "WashingFinish",
+      "description": "Cleaning completed",
+      "protocal": "MQTT",
+      "payload": {
+        "payloadName": "WashingFinishStatus",
+        "description": "Returns the cleaning completion event",
+        "payloadData": [
+          {
+            "name": "WashingStatus",
+            "type": "string",
+            "unit": "",
+            "description": "Cleaning Completion Status"
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "WashingStart",
+      "description": "Cleaning begins",
+      "protocal": "MQTT",
+      "payload": {
+        "payloadName": "WashingStart",
+        "description": "Returns the cleaning start event",
+        "payloadData": [
+          {
+            "name": "WashingStartEvent",
+            "type": "string",
+            "unit": "",
+            "description": "Cleaning start event"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "resourceName": "camera",
+  "resourceType": "device",
+  "resourceDesc": "Camera equipment, used to provide environmental video, image monitoring data",
+  "attributes": [
+    {
+      "attrName": "position",
+      "attrDesc": "Location where this camera is deployed",
+      "attrType": "POSITION"
+    },
+    {
+      "attrName": "resolution",
+      "attrDesc": "Camera Resolution",
+      "attrType": "string"
+    },
+    {
+      "attrName": "coverArea",
+      "attrDesc": "The range of environments that can be covered by camera video",
+      "attrType": "POSITION"
+    }
+  ],
+  "constraint": {
+    "temporal": "",
+    "spatial": ""
+  },
+  "commands": [
+    {
+      "commandName": "cameraSpin",
+      "description": "Camera shooting angle rotation",
+      "protocal": "HTTP",
+      "precondition": {
+        "description": ""
+      },
+      "effect": {
+        "description": "Camera shooting area change"
+      },
+      "input": [
+        {
+          "name": "spinDirection",
+          "type": "string",
+          "unit": "",
+          "description": "Direction of target camera rotation, up, down, left, right"
+        },
+        {
+          "name": "spinAngle",
+          "type": "string",
+          "unit": "pi",
+          "description": "Angle of target camera rotation"
+        }
+      ],
+      "result": {
+        "description": "Camera rotation complete",
+        "retuenData": [
+          {
+            "name": "spinFinish",
+            "type": "bool",
+            "unit": "",
+            "description": "Returns whether the rotation is complete or not, 0 is not complete, 1 is complete"
+          }
+        ]
+      }
+    }
+  ],
+  "query": [
+    {
+      "queryName": "realTimeVideoQuery",
+      "protocal": "RTSP",
+      "description": "Query command for querying live video data",
+      "input": [],
+      "result": {
+        "description": "Returns real-time monitoring data",
+        "returnData": [
+          {
+            "name": "videoFrames",
+            "type": "array",
+            "unit": "",
+            "description": "Continuously returns the current video frame data"
+          }
+        ]
+      }
+    },
+    {
+      "queryName": "historyVideoQuery",
+      "protocal": "HTTP",
+      "description": "Query command to query historical video data for a specified time period",
+      "input": [
+        {
+          "name": "startTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Starting moment of historical video search"
+        },
+        {
+          "name": "endTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "End moment of historical video enquiry"
+        }
+      ],
+      "result": {
+        "description": "Returns historical monitoring data for a specified period of time",
+        "returnData": [
+          {
+            "name": "videoFrames",
+            "type": "array",
+            "unit": "",
+            "description": "Continuous return of historical video surveillance data"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "eventName": "faceImageCapture",
+      "description": "Keyframe capture of image data where a face is detected",
+      "protocal": "MQTT",
+      "payload": {
+        "payloadName": "faceImage",
+        "description": "Returns the image, timestamp, and location information of the detected presence of a face frame",
+        "payloadData": [
+          {
+            "name": "timeStamp",
+            "type": "string",
+            "unit": "",
+            "description": "Keyframe Capture Image Timestamp"
+          },
+          {
+            "name": "imageFrame",
+            "type": "array",
+            "unit": "",
+            "description": "Keyframe Capture Image Data"
+          },
+          {
+            "name": "location",
+            "type": "string",
+            "unit": "",
+            "description": "Capture the location information of the image data"
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "bicycleImageCapture",
+      "description": "Keyframe capture image data for detected bicycles",
+      "protocal": "MQTT",
+      "payload": {
+        "payloadName": "bicycleImage",
+        "description": "Returns the image, timestamp, and location information of the detected presence of a bicycle frame",
+        "payloadData": [
+          {
+            "name": "timeStamp",
+            "type": "string",
+            "unit": "",
+            "description": "Keyframe Capture Image Timestamp"
+          },
+          {
+            "name": "imageFrame",
+            "type": "array",
+            "unit": "",
+            "description": "Keyframe Capture Image Data"
+          },
+          {
+            "name": "location",
+            "type": "string",
+            "unit": "",
+            "description": "Capture the location information of the image data"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "resourceName": "DoorWindowSensor",
+  "resourceType": "sensor",
+  "resourceDesc": "Door and window sensors to detect the opening and closing status of a door or window",
+  "attributes": [
+    {
+      "attrName": "position",
+      "attrDesc": "Location where door and window sensors are deployed",
+      "attrType": "POSITION"
+    }
+  ],
+  "constraint": {
+    "temporal": "",
+    "spatial": "Installation next to doors and windows"
+  },
+  "commands": [],
+  "query": [
+    {
+      "queryName": "doorWindowQuery",
+      "protocal": "MQTT",
+      "description": "Query sensor switching",
+      "input": [],
+      "result": {
+        "description": "Switching conditions detected by the sensor",
+        "returnData": [
+          {
+            "name": "isOpen",
+            "type": "bool",
+            "unit": "",
+            "description": "Status of door or window opening and closing"
+          }
+        ]
+      }
+    },
+    {
+      "queryName": "doorWindowRecordQuery",
+      "protocal": "MQTT",
+      "description": "Querying the sensor's switching history",
+      "input": [
+        {
+          "name": "startTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Starting moment of history search"
+        },
+        {
+          "name": "endTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Ending moment of history search"
+        }
+      ],
+      "result": {
+        "description": "Sensor-detected switching history",
+        "returnData": [
+          {
+            "name": "boolStateRecord",
+            "type": "String",
+            "unit": "",
+            "description": "Record door and window status history with a string"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "eventName": "doorWindowOpenEvent",
+      "description": "Event that detects an open door or window",
+      "protocal": "MQTT",
+      "payload": {
+        "payloadName": "doorWindowOpen",
+        "description": "Trigger event for door or window opening",
+        "payloadData": [
+          {
+            "name": "openEvent",
+            "type": "string",
+            "unit": "",
+            "description": "Trigger message for door or window opening"
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "doorWindowCloseEvent",
+      "description": "Event that detects a closed door or window",
+      "protocal": "MQTT",
+      "payload": {
+        "payloadName": "doorWindowClose",
+        "description": "Trigger event for door or window closing",
+        "payloadData": [
+          {
+            "name": "closeEvent",
+            "type": "string",
+            "unit": "",
+            "description": "Trigger message for door or window closing"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "resourceName": "Humidifier",
+  "resourceType": "device",
+  "resourceDesc": "Humidifier to add humidity to the environment",
+  "attributes": [
+    {
+      "attrName": "position",
+      "attrDescription": "Specific locations where humidifiers are deployed",
+      "attrType": "POSITION"
+    }
+  ],
+  "constraint": {
+    "temporal": "",
+    "spatial": ""
+  },
+  "commands": [
+    {
+      "commandName": "addHumidity",
+      "description": "Adding humidity to the environment",
+      "protocal": "Http",
+      "precondition": {
+        "description": ""
+      },
+      "effect": {
+        "description": "Increase in the humidity value of the environment"
+      },
+      "input": [
+        {
+          "name": "humidityValue",
+          "type": "String",
+          "unit": "",
+          "description": "Humidity value of the environment"
+        }
+      ],
+      "result": {
+        "description": "Reach humidity value",
+        "returnData": [
+          {
+            "name": "valueReached",
+            "type": "bool",
+            "unit": "",
+            "description": "Returns whether the specified humidity value has been reached, with 0 being not reached and 1 being reached."
+          }
+        ]
+      }
+    }
+  ],
+  "query": [
+    {
+      "queryName": "realTimeHumidityValue",
+      "description": "Query real-time ambient humidity value",
+      "protocal": "Http",
+      "input": [],
+      "result": {
+        "description": "Returns the real-time ambient humidity value",
+        "returnData": [
+          {
+            "name": "humidityValue",
+            "type": "float",
+            "unit": "",
+            "description": "Continuously returns the humidity value of the current environment"
+          }
+        ]
+      }
+    },
+    {
+      "queryName": "addHumidityRecordQuery",
+      "description": "Check the history of humidification of the humidifier",
+      "protocal": "HTTP",
+      "input": [
+        {
+          "name": "startTimesStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Humidifier switch-on time"
+        },
+        {
+          "name": "endTimesStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Humidifier switch-off time"
+        }
+      ],
+      "result": {
+        "description": "Returns the history of humidity increase for the current humidifier",
+        "returnData": [
+          {
+            "name": "addHumidityRecord",
+            "type": "String",
+            "unit": "",
+            "description": "Returns the history of humidity increase for the current humidifier"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "eventName": "humidityValueReached",
+      "description": "The set ambient humidity value is reached",
+      "protocal": "MQTT",
+      "payload": {
+        "payloadName": "humidityValue",
+        "description": "Returns the humidity value of the current environment",
+        "payloadData": [
+          {
+            "name": "humidity",
+            "type": "float",
+            "unit": "",
+            "description": "Current ambient humidity value"
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "addHumidityStartEvent",
+      "description": "Trigger event detected that the humidifier has started working",
+      "protocal": "MQTT",
+      "payload": {
+        "payloadName": "addHumidityStart",
+        "description": "Trigger event for humidifier to start working",
+        "payloadData": [
+          {
+            "name": "startEvent",
+            "type": "string",
+            "unit": "",
+            "description": "Trigger event for humidifier to start working"
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "addHumidityEndEvent",
+      "description": "Trigger event detected for end of humidifier operation",
+      "protocal": "MQTT",
+      "payload": {
+        "payloadName": "addHumidityEnd",
+        "description": "Trigger event for end of humidifier operation",
+        "payloadData": [
+          {
+            "name": "closeEvent",
+            "type": "string",
+            "unit": "",
+            "description": "Trigger event for end of humidifier operation"
+          }
+        ]
+      }
+    }
+  ]
+}

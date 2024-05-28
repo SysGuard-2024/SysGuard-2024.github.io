@@ -1,0 +1,143 @@
+{
+  "resourceName": "PrinterDevice",
+  "resourceType": "device",
+  "resourceDesc": "Printers, provision of printing materials",
+  "attributes": [
+    {
+      "attrName": "position",
+      "attrDesc": "Location where the printer is deployed",
+      "attrType": "POSITION"
+    }
+  ],
+  "constraint": {
+    "temporal": "",
+    "spatial": ""
+  },
+  "commands": [
+    {
+      "commandName": "printFile",
+      "description": "Functions for Printing Documents",
+      "protocal": "HTTP",
+      "precondition": {
+        "description": "Sufficient printer paper"
+      },
+      "effect": {
+        "description": "Print out the required documents"
+      },
+      "input": [
+        {
+          "name": "fileUrl",
+          "type": "string",
+          "unit": "",
+          "description": "Url address of the file to print"
+        },
+        {
+          "name": "fileCount",
+          "type": "string",
+          "unit": "",
+          "description": "Number of copies of documents printed"
+        }
+      ],
+      "result": {
+        "description": "Print file complete",
+        "retuenData": [
+          {
+            "name": "printFinish",
+            "type": "bool",
+            "unit": "",
+            "description": "Returns whether printing is complete, 0 is not complete, 1 is complete"
+          }
+        ]
+      }
+    }
+  ],
+  "query": [
+    {
+      "queryName": "paperLeftQuery",
+      "protocal": "HTTP",
+      "description": "Checking the amount of paper remaining in the printer",
+      "input": [],
+      "result": {
+        "description": "Amount of paper remaining in the printer",
+        "returnData": [
+          {
+            "name": "paperCount",
+            "type": "int",
+            "unit": "",
+            "description": "Amount of paper remaining in the printer"
+          }
+        ]
+      }
+    },
+    {
+      "queryName": "isWorkQuery",
+      "protocal": "HTTP",
+      "description": "Checking whether the printer is working",
+      "input": [],
+      "result": {
+        "description": "Is the printer working",
+        "returnData": [
+          {
+            "name": "isWork",
+            "type": "bool",
+            "unit": "",
+            "description": "Is the printer working"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "eventName": "printFinishEvent",
+      "description": "Detecting the printer print completion event",
+      "protocal": "HTTP",
+      "payload": {
+        "payloadName": "printFinish",
+        "description": "Printer print completion trigger event",
+        "payloadData": [
+          {
+            "name": "printFinish",
+            "type": "string",
+            "unit": "",
+            "description": "Printer print completion trigger message"
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "needPaperEvent",
+      "description": "Detecting a printer out-of-paper event",
+      "protocal": "HTTP",
+      "payload": {
+        "payloadName": "needPaper",
+        "description": "Trigger event for printer out of paper",
+        "payloadData": [
+          {
+            "name": "needPaper",
+            "type": "string",
+            "unit": "",
+            "description": "Printer Out of Paper Trigger Message"
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "needOilEvent",
+      "description": "Detecting a printer missing ink event",
+      "protocal": "HTTP",
+      "payload": {
+        "payloadName": "needOil",
+        "description": "Trigger event for printer missing ink",
+        "payloadData": [
+          {
+            "name": "needOil",
+            "type": "string",
+            "unit": "",
+            "description": "Trigger message for printer missing ink"
+          }
+        ]
+      }
+    }
+  ]
+}

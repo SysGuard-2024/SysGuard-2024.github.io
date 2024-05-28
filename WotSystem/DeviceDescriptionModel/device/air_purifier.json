@@ -1,0 +1,162 @@
+{
+  "resourceName": "airPurifierer",
+  "resourceType": "device",
+  "resourceDesc": "Purify the air, polluted air through the filter inside the machine will remove or adsorption of various pollutants, to achieve the purpose of cleaning and purifying the air",
+  "attributes": [
+    {
+      "attrName": "cleanTech",
+      "attrDescription": "clean technology",
+      "attrType": "string"
+    },
+    {
+      "attrName": "position",
+      "attrDescription": "Deployment Location",
+      "attrType": "POSITION"
+    }
+  ],
+  "constraint": {
+    "temporal": "",
+    "spatial": "indoor"
+  },
+  "commands": [
+    {
+      "commandName": "cleanAir",
+      "description": "Provide clean and safe air to users",
+      "protocal": "HTTP",
+      "precondition": {
+        "description": "The air inlet of the main unit should be kept at a certain distance from walls and other obstructions when in use."
+      },
+      "effect": {
+        "description": ""
+      },
+      "input": [],
+      "result": {
+        "description": "Equipment implementation",
+        "returnData": [
+          {
+            "name": "isOpen",
+            "type": "boolean",
+            "unit": "",
+            "description": "Is the device switched on"
+          }
+        ]
+      }
+    }
+  ],
+  "query": [
+    {
+      "queryName": "airCurrent",
+      "description": "Check Air Purification Results",
+      "protocal": "HTTP",
+      "input": [
+        {
+          "name": "time",
+          "type": "long",
+          "unit": "",
+          "description": "Time to purify the air"
+        }
+      ],
+      "result": {
+        "description": "Air Purification Results",
+        "returnData": [
+          {
+            "name": "air",
+            "type": "Object",
+            "unit": "",
+            "description": "Air quality situation"
+          }
+        ]
+      }
+    },
+    {
+      "queryName": "airHistory",
+      "description": "Check the history of air purification",
+      "protocal": "HTTP",
+      "input": [
+        {
+          "name": "startTime",
+          "type": "long",
+          "unit": "",
+          "description": "Start timestamp"
+        },
+        {
+          "name": "endTime",
+          "type": "long",
+          "unit": "",
+          "description": "end timestamp"
+        }
+      ],
+      "result": {
+        "description": "Historical air purification",
+        "returnData": [
+          {
+            "name": "air",
+            "type": "array",
+            "unit": "",
+            "description": "Historical air purification"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "eventName": "airPurifierFinish",
+      "description": "Air purification complete",
+      "protocal": "AMQP",
+      "payload": {
+        "payloadName": "airPurifier",
+        "description": "Air Purification Results",
+        "payloadData": [
+          {
+            "name": "air",
+            "type": "Object",
+            "unit": "",
+            "description": "Air quality situation"
+          },
+          {
+            "name": "timestamp",
+            "type": "long",
+            "unit": "",
+            "description": "Completion time"
+          },
+          {
+            "name": "location",
+            "type": "string",
+            "unit": "",
+            "description": "Location of air purification"
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "airPurifierStart",
+      "description": "Air purification begins",
+      "protocal": "AMQP",
+      "payload": {
+        "payloadName": "airPurifier",
+        "description": "Current air conditions",
+        "payloadData": [
+          {
+            "name": "air",
+            "type": "Object",
+            "unit": "",
+            "description": "Air quality situation"
+          },
+          {
+            "name": "timestamp",
+            "type": "long",
+            "unit": "",
+            "description": "Start time"
+          },
+          {
+            "name": "location",
+            "type": "string",
+            "unit": "",
+            "description": "Location of air purification"
+          }
+        ]
+      }
+    }
+  ]
+}

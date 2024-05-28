@@ -1,0 +1,179 @@
+{
+  "resourceName": "SpeakerDevice",
+  "resourceType": "device",
+  "resourceDesc": "Speakers that provide audio playback, intelligent voice input and more",
+  "attributes": [
+    {
+      "attrName": "position",
+      "attrDesc": "Location of speaker deployment",
+      "attrType": "POSITION"
+    }
+  ],
+  "constraint": {
+    "temporal": "",
+    "spatial": "indoors"
+  },
+  "commands": [
+    {
+      "commandName": "audioPlay",
+      "description": "Functions for audio playback",
+      "protocal": "HTTP",
+      "precondition": {
+        "description": "Speakers working properly"
+      },
+      "effect": {
+        "description": "There's audio playing"
+      },
+      "input": [
+        {
+          "name": "audioUrl",
+          "type": "string",
+          "unit": "",
+          "description": "Url address of the audio to be played"
+        },
+        {
+          "name": "audioVolume",
+          "type": "int",
+          "unit": "",
+          "description": "Volume settings for audio playback"
+        }
+      ],
+      "result": {
+        "description": "Audio starts playing",
+        "retuenData": [
+          {
+            "name": "audioStart",
+            "type": "bool",
+            "unit": "",
+            "description": "Returns whether the audio is normal, 0 is not playing, 1 is starting to play"
+          }
+        ]
+      }
+    },
+    {
+      "commandName": "intelligentVoiceDialogue",
+      "description": "Functions of Intelligent Voice Dialogue",
+      "protocal": "HTTP",
+      "precondition": {
+        "description": ""
+      },
+      "effect": {
+        "description": ""
+      },
+      "input": [],
+      "result": {
+        "description": "Intelligent voice dialogue opens",
+        "retuenData": [
+          {
+            "name": "voiceDialogueResults",
+            "type": "bool",
+            "unit": "",
+            "description": "Returns whether the intelligent voice dialogue is normally on, 0 is not normal, 1 is normal"
+          }
+        ]
+      }
+    }
+  ],
+  "query": [
+    {
+      "queryName": "batteryLeftQuery",
+      "protocal": "HTTP",
+      "description": "Check Speaker Battery Level",
+      "input": [],
+      "result": {
+        "description": "Speaker remaining power",
+        "returnData": [
+          {
+            "name": "batteryLeft",
+            "type": "int",
+            "unit": "",
+            "description": "Speaker remaining power"
+          }
+        ]
+      }
+    },
+    {
+      "queryName": "isWorkQuery",
+      "protocal": "HTTP",
+      "description": "Check if the speaker is switched on",
+      "input": [],
+      "result": {
+        "description": "Is the speaker switched on",
+        "returnData": [
+          {
+            "name": "isWork",
+            "type": "bool",
+            "unit": "",
+            "description": "Is the speaker switched on"
+          }
+        ]
+      }
+    },
+    {
+      "queryName": "audioRecordQuery",
+      "protocal": "HTTP",
+      "description": "Querying the history of audio playback",
+      "input": [
+        {
+          "name": "startTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Starting moment of history search"
+        },
+        {
+          "name": "endTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Ending moment of history search"
+        }
+      ],
+      "result": {
+        "description": "Audio playback history",
+        "returnData": [
+          {
+            "name": "audioRecord",
+            "type": "list",
+            "unit": "",
+            "description": "Information on the history of audio playback"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "eventName": "lowBatteryEvent",
+      "description": "Event that detects that the speaker is low on battery and needs to be recharged",
+      "protocal": "HTTP",
+      "payload": {
+        "payloadName": "lowBattery",
+        "description": "Speaker Low Battery Trigger Event",
+        "payloadData": [
+          {
+            "name": "lowBattery",
+            "type": "string",
+            "unit": "",
+            "description": "Speaker Speaker Low Battery Trigger Message Low Battery Trigger Event"
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "speechRecognitionEvent",
+      "description": "Intelligent voice recognises the appropriate content",
+      "protocal": "HTTP",
+      "payload": {
+        "payloadName": "speechRecognition",
+        "description": "The events of speech recognition",
+        "payloadData": [
+          {
+            "name": "msg",
+            "type": "string",
+            "unit": "",
+            "description": "The content of speech recognition"
+          }
+        ]
+      }
+    }
+  ]
+}

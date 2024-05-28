@@ -1,0 +1,167 @@
+{
+  "resourceName": "WaterDispanser",
+  "resourceType": "device",
+  "resourceDesc": "Drinking fountains, devices that provide people with drinking water",
+  "attributes": [
+    {
+      "position": "Specific deployment locations",
+      "attrDesc": "Location of water dispenser equipment deployed",
+      "attrType": "POSITION"
+    }
+  ],
+  "constraint": {
+    "temporal": "",
+    "spatial": "indoor"
+  },
+  "commands": [
+    {
+      "commandName": "waterSupply",
+      "description": "Provision of water functions",
+      "protocal": "HTTP",
+      "precondition": {
+        "description": "Sufficient water in the water dispenser"
+      },
+      "effect": {
+        "description": "Fill the glass with water"
+      },
+      "input": [
+        {
+          "name": "waterType",
+          "type": "string",
+          "unit": "",
+          "description": "Type of water temperature required, cold, lukewarm and hot water"
+        }
+      ],
+      "result": {
+        "description": "Water filling complete.",
+        "retuenData": [
+          {
+            "name": "waterSupplyFinish",
+            "type": "bool",
+            "unit": "",
+            "description": "Returns whether water filling is complete, 0 is not complete, 1 is complete"
+          }
+        ]
+      }
+    }
+  ],
+  "query": [
+    {
+      "queryName": "waterLeftQuery",
+      "protocal": "HTTP",
+      "description": "Enquire about the amount of water in a water dispenser",
+      "input": [],
+      "result": {
+        "description": "Water remaining in water dispenser",
+        "returnData": [
+          {
+            "name": "waterVolume",
+            "type": "int",
+            "unit": "",
+            "description": "Water volume of water dispenser"
+          }
+        ]
+      }
+    },
+    {
+      "queryName": "isWorkQuery",
+      "protocal": "HTTP",
+      "description": "Check if the water dispenser is working",
+      "input": [],
+      "result": {
+        "description": "Is the water dispenser working",
+        "returnData": [
+          {
+            "name": "isWork",
+            "type": "bool",
+            "unit": "",
+            "description": "Water dispenser working or not"
+          }
+        ]
+      }
+    },
+    {
+      "queryName": "historySwitchQuery",
+      "protocal": "HTTP",
+      "description": "Querying information about switching on and off the water dispenser for a specific period of time",
+      "input": [
+        {
+          "name": "startTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Starting moment of the query"
+        },
+        {
+          "name": "endTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Moment of closure of the enquiry"
+        }
+      ],
+      "result": {
+        "description": "Returns data for switching on/off the water dispenser for a specified period of time",
+        "returnData": [
+          {
+            "name": "historySwitch",
+            "type": "array",
+            "unit": "",
+            "description": "Return to Historical Switching Drinker Data"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "eventName": "WaterSupplyStartEvent",
+      "description": "Detecting the event that a water dispenser starts to supply water",
+      "protocal": "HTTP",
+      "payload": {
+        "payloadName": "WaterSupplyStartFinish",
+        "description": "Drinking fountains start supplying water",
+        "payloadData": [
+          {
+            "name": "WaterSupplyStart",
+            "type": "string",
+            "unit": "",
+            "description": "Trigger message for water dispenser to start supplying water"
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "WaterSupplyFinishEvent",
+      "description": "Detection of water dispenser filling completion events",
+      "protocal": "HTTP",
+      "payload": {
+        "payloadName": "WaterSupplyFinish",
+        "description": "Trigger event for water dispenser to end water supply",
+        "payloadData": [
+          {
+            "name": "WaterSupplyFinish",
+            "type": "string",
+            "unit": "",
+            "description": "Trigger message for water dispenser to end water supply"
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "needWaterEvent",
+      "description": "Detecting incidents of water shortage in drinking fountains",
+      "protocal": "HTTP",
+      "payload": {
+        "payloadName": "needWater",
+        "description": "Trigger event for water shortage in water dispenser",
+        "payloadData": [
+          {
+            "name": "needWater",
+            "type": "string",
+            "unit": "",
+            "description": "Trigger message for water shortage in water dispenser"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "resourceName": "SwitchSensor",
+  "resourceType": "sensor",
+  "resourceDesc": "Switch sensors, sensing whether a switch is closed or open",
+  "attributes": [
+    {
+      "attrName": "position",
+      "attrDesc": "Positions where switching sensors are deployed",
+      "attrType": "POSITION"
+    }
+  ],
+  "constraint": {
+    "temporal": "",
+    "spatial": ""
+  },
+  "commands": [],
+  "query": [
+    {
+      "queryName": "switchRecordQuery",
+      "protocal": "MQTT",
+      "description": "Querying the history of switching status",
+      "input": [
+        {
+          "name": "startTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Starting moment of historical switching status query"
+        },
+        {
+          "name": "endTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Ending moment of historical switching status query"
+        }
+      ],
+      "result": {
+        "description": "Returns historical switching status data",
+        "returnData": [
+          {
+            "name": "switchRecord",
+            "type": "string",
+            "unit": "",
+            "description": "Returns the switch's open or closed history in a string"
+          }
+        ]
+      }
+    },
+    {
+      "queryName": "switchStatusQuery",
+      "protocal": "MQTT",
+      "description": "Check whether the switch is on or off",
+      "input": [],
+      "result": {
+        "description": "Switch sensor detects the status of the switch",
+        "returnData": [
+          {
+            "name": "isOpen",
+            "type": "bool",
+            "unit": "",
+            "description": "The state of the switch being open or closed"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "eventName": "switchOpenEvent",
+      "description": "Switch on event detected",
+      "protocal": "MQTT",
+      "payload": {
+        "payloadName": "switchOpen",
+        "description": "Trigger event for switch opening",
+        "payloadData": [
+          {
+            "name": "openEvent",
+            "type": "string",
+            "unit": "",
+            "description": "Trigger message for switch opening"
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "switchCloseEvent",
+      "description": "Switch off event detected",
+      "protocal": "MQTT",
+      "payload": {
+        "payloadName": "doorWindowClose",
+        "description": "Trigger event for switch off",
+        "payloadData": [
+          {
+            "name": "closeEvent",
+            "type": "string",
+            "unit": "",
+            "description": "Trigger message for switch closing"
+          }
+        ]
+      }
+    }
+  ]
+}

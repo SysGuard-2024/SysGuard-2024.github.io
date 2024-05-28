@@ -1,0 +1,91 @@
+{
+  "resourceName": "humiditySensor",
+  "resourceType": "sensor",
+  "resourceDesc": "Humidity sensors for sensing ambient humidity",
+  "attributes": [
+    {
+      "attrName": "position",
+      "attrDesc": "The location where this humidity sensor is deployed",
+      "attrType": "POSITION"
+    }
+  ],
+  "constraint": {
+    "temporal": "",
+    "spatial": ""
+  },
+  "commands": [],
+  "query": [
+    {
+      "queryName": "realHumidityQuery",
+      "protocal": "HTTP",
+      "description": "Query command to query humidity data",
+      "input": [],
+      "result": {
+        "description": "Returns real-time humidity data",
+        "returnData": [
+          {
+            "name": "humidity",
+            "type": "double",
+            "unit": "",
+            "description": "Real-time humidity data"
+          }
+        ]
+      }
+    },
+    {
+      "queryName": "historyHumidityQuery",
+      "protocal": "HTTP",
+      "description": "Query command to query historical humidity data for a specified time period",
+      "input": [
+        {
+          "name": "startTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Starting moment of historical humidity data query"
+        },
+        {
+          "name": "endTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Ending moment of historical humidity data query"
+        }
+      ],
+      "result": {
+        "description": "Returns historical humidity data for a specified period of time",
+        "returnData": [
+          {
+            "name": "humidity",
+            "type": "double",
+            "unit": "",
+            "description": "Continuous return of historical humidity data"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "eventName": "uploadHumidityInfo",
+      "description": "Humidity information reporting",
+      "protocal": "MQTT",
+      "payload": {
+        "payloadName": "Humidity",
+        "description": "Upload current humidity, time stamp",
+        "payloadData": [
+          {
+            "name": "timeStamp",
+            "type": "string",
+            "unit": "",
+            "description": "Humidity upload timestamp"
+          },
+          {
+            "name": "humidity",
+            "type": "double",
+            "unit": "",
+            "description": "Humidity data"
+          }
+        ]
+      }
+    }
+  ]
+}

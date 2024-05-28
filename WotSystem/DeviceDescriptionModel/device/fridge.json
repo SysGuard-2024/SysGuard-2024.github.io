@@ -1,0 +1,107 @@
+{
+  "resourceName": "FridgeDevice",
+  "resourceType": "device",
+  "resourceDesc": "Frige equipment for fresh and frozen foods",
+  "attributes": [
+    {
+      "position": "Specific deployment locations",
+      "attrDesc": "Location of the environment in which the refrigerator is deployed",
+      "attrType": "POSITION"
+    },
+    {
+      "size": "Specific refrigerator size",
+      "attrDesc": "Specific dimensions of this refrigerator(length, width, height)",
+      "attrType": "tuple"
+    }
+  ],
+  "constraint": {
+    "temporal": "",
+    "spatial": "indoor"
+  },
+  "commands": [],
+  "query": [
+    {
+      "queryName": "FoodInfoQuery",
+      "description": "Enquire about food information",
+      "protocal": "HTTP",
+      "input": [],
+      "result": {
+        "description": "Returns food quantities, freshness and shelf life information, etc.",
+        "returnData": [
+          {
+            "name": "FoodInfo",
+            "type": "json",
+            "unit": "",
+            "description": "Corresponding information for different foods"
+          }
+        ]
+      }
+    },
+    {
+      "queryName": "historySwitchQuery",
+      "protocal": "HTTP",
+      "description": "Query the information of switching on and off the refrigerator in a specific period of time",
+      "input": [
+        {
+          "name": "startTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Starting moment of the query"
+        },
+        {
+          "name": "endTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Ending moment of the query"
+        }
+      ],
+      "result": {
+        "description": "Returns the data of opening and closing the refrigerator door during the specified time period",
+        "returnData": [
+          {
+            "name": "historySwitch",
+            "type": "array",
+            "unit": "",
+            "description": "Return to historical switching frige data"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "eventName": "OpenFridgeEvent",
+      "description": "Open the fridge",
+      "protocal": "HTTP",
+      "payload": {
+        "payloadName": "OpenFridge",
+        "description": "Returns the open frige event",
+        "payloadData": [
+          {
+            "name": "OpenFridgeState",
+            "type": "json",
+            "unit": "",
+            "description": "Frige in open state"
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "CloseFridgeEvent",
+      "description": "Close the fridge",
+      "protocal": "HTTP",
+      "payload": {
+        "payloadName": "CloseFridge",
+        "description": "Returns the close frige event",
+        "payloadData": [
+          {
+            "name": "CloseFridgeState",
+            "type": "json",
+            "unit": "",
+            "description": "Frige in close state"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "resourceName": "smartLight",
+  "resourceType": "device",
+  "resourceDesc": "Smart light devices for illumination",
+  "attributes": [
+    {
+      "position": "Specific deployment locations",
+      "attrDesc": "Location where this smart light is deployed",
+      "attrType": "POSITION"
+    },
+    {
+      "brightness": "",
+      "attrDesc": "Describe smart light brightness",
+      "attrType": "int"
+    },
+    {
+      "coverArea": "",
+      "attrDesc": "The range of environments that can be covered by intelligent lighting",
+      "attrType": "POSITION"
+    },
+    {
+      "colorTemp": "",
+      "attrDesc": "Smart light colour temperature",
+      "attrType": "int"
+    }
+  ],
+  "constraint": {
+    "temporal": "",
+    "spatial": "indoor"
+  },
+  "commands": [
+    {
+      "commandName": "lightingStart",
+      "description": "Smart lights start lighting",
+      "protocal": "HTTP",
+      "precondition": {
+        "description": "Lamp is currently off"
+      },
+      "effect": {
+        "description": "Smart lights start lighting"
+      },
+      "input": [
+        {
+          "name": "colorTemp",
+          "type": "int",
+          "unit": "",
+          "description": "Colour temperature of the target smart light"
+        },
+        {
+          "name": "brightness",
+          "type": "int",
+          "unit": "",
+          "description": "Brightness of target smart lights"
+        }
+      ],
+      "result": {
+        "description": "Smart lights start lighting",
+        "retuenData": [
+          {
+            "name": "startFinish",
+            "type": "bool",
+            "unit": "",
+            "description": "Returns lighting complete or not complete, 0 is not complete, 1 is complete"
+          }
+        ]
+      }
+    },
+    {
+      "commandName": "colorTempChange",
+      "description": "Setting the intelligent light colour temperature",
+      "protocal": "HTTP",
+      "precondition": {
+        "description": "Smart lights are already lighting up"
+      },
+      "effect": {
+        "description": "Intelligent lamp colour temperature change"
+      },
+      "input": [
+        {
+          "name": "colorTemp",
+          "type": "int",
+          "unit": "",
+          "description": "Colour temperature of the target smart light"
+        }
+      ],
+      "result": {
+        "description": "Intelligent lamp colour temperature change",
+        "retuenData": [
+          {
+            "name": "changeFinish",
+            "type": "bool",
+            "unit": "",
+            "description": "Return to the colour temperature change is completed or not completed, 0 is not completed, 1 is completed"
+          }
+        ]
+      }
+    },
+    {
+      "commandName": "brightnessChange",
+      "description": "Setting the smart light brightness",
+      "protocal": "HTTP",
+      "precondition": {
+        "description": "Smart lights are already lighting up"
+      },
+      "effect": {
+        "description": "Smart light brightness change"
+      },
+      "input": [
+        {
+          "name": "brightness",
+          "type": "int",
+          "unit": "",
+          "description": "Brightness of target smart lights"
+        }
+      ],
+      "result": {
+        "description": "Smart light brightness change",
+        "retuenData": [
+          {
+            "name": "changeFinish",
+            "type": "bool",
+            "unit": "",
+            "description": "Returns brightness change complete or not complete, 0 is not complete, 1 is complete"
+          }
+        ]
+      }
+    }
+  ],
+  "query": [
+    {
+      "queryName": "attributesQuery",
+      "protocal": "HTTP",
+      "description": "Query directives for querying properties",
+      "input": [],
+      "result": {
+        "description": "Return to smart light Properties Data",
+        "returnData": [
+          {
+            "position": "Specific deployment locations",
+            "description": "Location where this smart light is deployed",
+            "type": "POSITION"
+          },
+          {
+            "brightness": "",
+            "description": "Describe smart light brightness",
+            "type": "int"
+          },
+          {
+            "coverArea": "",
+            "description": "The range of environments that can be covered by intelligent lighting",
+            "type": "POSITION"
+          },
+          {
+            "colorTemp": "",
+            "description": "Colour temperature of smart lights",
+            "type": "int"
+          }
+        ]
+      }
+    },
+    {
+      "queryName": "historyStateQuery",
+      "protocal": "HTTP",
+      "description": "Query command to query historical data for a specified period of time",
+      "input": [
+        {
+          "name": "startTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Starting moment of historical data query"
+        },
+        {
+          "name": "endTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Ending moment of historical data query"
+        }
+      ],
+      "result": {
+        "description": "Returns historical data for a specified period of time",
+        "returnData": [
+          {
+            "name": "brightness",
+            "description": "Brightness of smart lights",
+            "unit": "",
+            "type": "array"
+          },
+          {
+            "attrName": "colorTemp",
+            "description": "Colour temperature of smart lights",
+            "unit": "",
+            "type": "boolean"
+          }
+        ]
+      }
+    }
+  ],
+  "events": []
+}

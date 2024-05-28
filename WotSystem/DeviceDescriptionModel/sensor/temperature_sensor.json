@@ -1,0 +1,91 @@
+{
+  "resourceName": "temperatureSensor",
+  "resourceType": "sensor",
+  "resourceDesc": "Temperature sensor to sense the ambient temperature",
+  "attributes": [
+    {
+      "attrName": "position",
+      "attrDesc": "The location where this temperature sensor is deployed",
+      "attrType": "POSITION"
+    }
+  ],
+  "constraint": {
+    "temporal": "",
+    "spatial": ""
+  },
+  "commands": [],
+  "query": [
+    {
+      "queryName": "realTemperatureQuery",
+      "protocal": "HTTP",
+      "description": "Query command to query temperature data",
+      "input": [],
+      "result": {
+        "description": "Returns real-time temperature data",
+        "returnData": [
+          {
+            "name": "temperature",
+            "type": "double",
+            "unit": "",
+            "description": "Real-time temperature data"
+          }
+        ]
+      }
+    },
+    {
+      "queryName": "historyHumidityQuery",
+      "protocal": "HTTP",
+      "description": "Query command to query historical temperature data for a specified time period",
+      "input": [
+        {
+          "name": "startTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Starting moment of historical temperature data query"
+        },
+        {
+          "name": "endTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Ending moment of historical temperature data query"
+        }
+      ],
+      "result": {
+        "description": "Returns historical temperature data for a specified period of time",
+        "returnData": [
+          {
+            "name": "temperature",
+            "type": "double",
+            "unit": "",
+            "description": "Continuous return of historical temperature data"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "eventName": "uploadTemperatureInfo",
+      "description": "Temperature information reporting",
+      "protocal": "MQTT",
+      "payload": {
+        "payloadName": "Temperature",
+        "description": "Upload current temperature, timestamp",
+        "payloadData": [
+          {
+            "name": "timeStamp",
+            "type": "string",
+            "unit": "",
+            "description": "Temperature upload timestamp"
+          },
+          {
+            "name": "temperature",
+            "type": "double",
+            "unit": "Celsius",
+            "description": "Temperature data"
+          }
+        ]
+      }
+    }
+  ]
+}

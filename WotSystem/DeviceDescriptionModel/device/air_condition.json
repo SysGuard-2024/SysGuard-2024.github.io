@@ -1,0 +1,179 @@
+{
+  "resourceName": "acDevice",
+  "resourceType": "device",
+  "resourceDesc": "Air conditioning, providing cooling etc",
+  "attributes": [
+    {
+      "attrName": "position",
+      "attrDesc": "Location of the environment in which the air conditioner is deployed",
+      "attrType": "POSITION"
+    }
+  ],
+  "constraint": {
+    "temporal": "",
+    "spatial": "indoors"
+  },
+  "commands": [
+    {
+      "commandName": "acTurnOn",
+      "description": "Turn on the air conditioner",
+      "protocal": "HTTP",
+      "precondition": {
+        "description": "Air Conditioning online"
+      },
+      "effect": {
+        "description": "Reduce the temperature of the environment"
+      },
+      "input": [
+        {
+          "name": "acModel",
+          "type": "string",
+          "unit": "",
+          "description": "Setting the mode of the air conditioner, e.g. gentle cooling mode, powerful cooling mode, etc."
+        },
+        {
+          "name": "acSpeed",
+          "type": "string",
+          "unit": "",
+          "description": "Setting the speed of the air conditioner, e.g. high, low, etc."
+        }
+      ],
+      "result": {
+        "description": "Turn on the air conditioner to finish",
+        "retuenData": [
+          {
+            "name": "acTurnOnFinish",
+            "type": "bool",
+            "unit": "",
+            "description": "Whether the air conditioner is on, 0 is not on, 1 is on"
+          }
+        ]
+      }
+    },
+    {
+      "commandName": "acTurnOff",
+      "description": "Turn off the air conditioning.",
+      "protocal": "HTTP",
+      "precondition": {
+        "description": "The air conditioning is on"
+      },
+      "effect": {
+        "description": ""
+      },
+      "input": [],
+      "result": {
+        "description": "Air conditioning shutdown complete",
+        "retuenData": [
+          {
+            "name": "acTurnOffFinish",
+            "type": "bool",
+            "unit": "",
+            "description": "Whether the air conditioner shutdown is completed, 0 is not completed, 1 is completed"
+          }
+        ]
+      }
+    }
+  ],
+  "query": [
+    {
+      "queryName": "isWorkQuery",
+      "protocal": "HTTP",
+      "description": "Check if the air conditioner is switched on",
+      "input": [],
+      "result": {
+        "description": "Was the air conditioner on?",
+        "returnData": [
+          {
+            "name": "isWork",
+            "type": "bool",
+            "unit": "",
+            "description": "Was the air conditioner in working mode"
+          }
+        ]
+      }
+    },
+    {
+      "queryName": "acRecordQuery",
+      "protocal": "HTTP",
+      "description": "Check the history of opening and closing of air-conditioners",
+      "input": [
+        {
+          "name": "startTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Starting moment of history search"
+        },
+        {
+          "name": "endTimeStamp",
+          "type": "string",
+          "unit": "",
+          "description": "Ending moment of history search"
+        }
+      ],
+      "result": {
+        "description": "History of air conditioner opening and closing",
+        "returnData": [
+          {
+            "name": "boolStateRecord",
+            "type": "String",
+            "unit": "",
+            "description": "Record the history of opening and closing the air conditioner with a character string"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "eventName": "errorEvent",
+      "description": "Detecting Air Conditioning Failure Event",
+      "protocal": "HTTP",
+      "payload": {
+        "payloadName": "error",
+        "description": "The air conditioner is malfunctioning",
+        "payloadData": [
+          {
+            "name": "error",
+            "type": "string",
+            "unit": "",
+            "description": "Description of air conditioning faults"
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "acOpenEvent",
+      "description": "Event of air-conditioning being switched on",
+      "protocal": "HTTP",
+      "payload": {
+        "payloadName": "acOpen",
+        "description": "The air conditioner was turned on",
+        "payloadData": [
+          {
+            "name": "acOpen",
+            "type": "string",
+            "unit": "",
+            "description": "Message that the air conditioner was turned on"
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "acCloseEvent",
+      "description": "Event of air-conditioning being switched off",
+      "protocal": "HTTP",
+      "payload": {
+        "payloadName": "acClose",
+        "description": "The air conditioner was turned off",
+        "payloadData": [
+          {
+            "name": "acClose",
+            "type": "string",
+            "unit": "",
+            "description": "Message that the air conditioner was turned off"
+          }
+        ]
+      }
+    }
+  ]
+}
