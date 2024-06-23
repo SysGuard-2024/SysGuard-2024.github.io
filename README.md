@@ -1,4 +1,4 @@
-## EnvGuard-2024.github.io
+## SysGuard-2024.github.io
 
 ## Application
 
@@ -27,6 +27,10 @@ Through interviews with staff in the environment, we obtained ten expected safet
 <img width="46.3%" src="https://github.com/SysGuard-2024/SysGuard-2024.github.io/blob/master/images/home_propertys.png"/>
 </div>
 
+## GUI
+
+The visualized environment property description tool. ([GUI](http://47.101.169.122:9038/))
+
 ## Environment Information
 
 <!-- We use the information in the [json file](https://github.com/SysGuard-2024/SysGuard-2024.github.io/blob/master/Simulation/PhysicalSpaceLayout) to construct neo4j for different smart WoT environments, and construct the [simulation environment](https://github.com/SysGuard-2024/SysGuard-2024.github.io/blob/master/Simulation/EnvironmentConstruct) by accessing neo4j. -->
@@ -37,4 +41,9 @@ The environment representation of the smart home WoT environment in [neo4j](http
 
 ## WoT System
 
-Through the [device agent interface](https://github.com/SysGuard-2024/SysGuard-2024.github.io/blob/master/WotSystem/DeviceProxyService/device_proxy_service.docx), we can efficiently schedule and manage devices. At the same time, the [ELK system](https://github.com/SysGuard-2024/SysGuard-2024.github.io/blob/master/WotSystem/LogCollector/log_collector.py) is integrated to generate detailed log data. In addition, [the device description model](https://github.com/SysGuard-2024/SysGuard-2024.github.io/blob/master/WotSystem/DeviceDescriptionModel/) provides detailed configuration and parameter information of the devices, which helps to parse the logs more accurately in the ELK system, thus enabling comprehensive monitoring and analysis of the device status.
+Through the [device agent interface](https://github.com/SysGuard-2024/SysGuard-2024.github.io/blob/master/Code/WotSystem/DeviceProxyService/device_proxy_service.docx), we can efficiently schedule and manage devices. At the same time, the [ELK system](https://github.com/SysGuard-2024/SysGuard-2024.github.io/blob/master/Code/WotSystem/LogCollector/log_collector.py) is integrated to generate detailed log data. In addition, [the device description model](https://github.com/SysGuard-2024/SysGuard-2024.github.io/blob/master/Code/WotSystem/DeviceDescriptionModel/) provides detailed configuration and parameter information of the devices, which helps to parse the logs more accurately in the ELK system, thus enabling comprehensive monitoring and analysis of the device status.
+
+## Data
+
+All the experimental data of our work is available:
+[Data](https://github.com/SysGuard-2024/SysGuard-2024.github.io/blob/master/Data)
