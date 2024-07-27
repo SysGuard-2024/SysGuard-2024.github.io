@@ -2,18 +2,18 @@
     "MeetingRoomOne": {
         "device": {
             "Light001": "0",
-            "AC001": "0",
+            "AC001": "1",
             "Window001": "0",
             "Door001": "0",
-            "Humidifier001": "1",
-            "AirPurifier001": "0",
+            "Humidifier001": "0",
+            "AirPurifier001": "1",
             "Projecter001": "0",
             "Heater001": "0",
             "Curtain001": "1"
         },
         "state": {
             "UltravioletLevel": "-2",
-            "Temperature": "0",
+            "Temperature": "-2",
             "Brightness": "1",
             "Humidity": "2",
             "Noise": "-1",
@@ -38,7 +38,7 @@
             "UltravioletLevel": "-2",
             "Temperature": "-2",
             "Brightness": "1",
-            "Humidity": "2",
+            "Humidity": "1",
             "Noise": "-1",
             "AirQuality": "1",
             "HumanState": "0",
@@ -48,14 +48,14 @@
     "TeaRoom": {
         "device": {
             "Light001": "0",
-            "Window001": "1",
+            "Window001": "0",
             "Door001": "0",
             "WaterDispenser001": "0",
             "Curtain001": "0",
             "MicrowaveOven001": "0"
         },
         "state": {
-            "Temperature": "0",
+            "Temperature": "2",
             "Brightness": "-2",
             "Humidity": "0",
             "Noise": "-1",
@@ -71,7 +71,7 @@
             "Speaker001": "0"
         },
         "state": {
-            "EnergyConsumption": "1",
+            "EnergyConsumption": "0",
             "Temperature": "1",
             "Brightness": "-2",
             "Humidity": "0",
@@ -84,7 +84,7 @@
     "Context": {
         "device": {},
         "state": {
-            "Temperature": "-1",
+            "Temperature": "0",
             "UltravioletLevel": "-2",
             "Brightness": "-2",
             "Humidity": "0",
@@ -112,7 +112,7 @@
         "state": {
             "UltravioletLevel": "-2",
             "Temperature": "1",
-            "Brightness": "1",
+            "Brightness": "0",
             "Humidity": "0",
             "Noise": "-1",
             "AirQuality": "1",

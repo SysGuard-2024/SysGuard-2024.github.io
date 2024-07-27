@@ -22,7 +22,7 @@
             "AC001": "0",
             "AirPurifier001": "1",
             "Curtain001": "0",
-            "Door001": "1",
+            "Door001": "0",
             "Heater001": "0",
             "Humidifier001": "0",
             "Light001": "1",
@@ -53,11 +53,11 @@
             "Curtain001": "0"
         },
         "state": {
-            "COLevel": "-1",
+            "COLevel": "0",
             "Temperature": "0",
             "Brightness": "-2",
             "Humidity": "0",
-            "AirQuality": "0",
+            "AirQuality": "1",
             "HumanState": "0",
             "HumanCount": "0"
         }
@@ -67,7 +67,7 @@
             "Light001": "0",
             "Door001": "0",
             "TowelDryer001": "0",
-            "WaterHeater001": "0",
+            "WaterHeater001": "1",
             "BathHeater001": "0"
         },
         "state": {
@@ -96,11 +96,11 @@
     "Context": {
         "device": {},
         "state": {
-            "Temperature": "-1",
+            "Temperature": "0",
             "Brightness": "-2",
             "Humidity": "0",
             "AirQuality": "0",
-            "Weather": "cloudy",
+            "Weather": "raining",
             "UltravioletLevel": "-2"
         }
     },
@@ -110,7 +110,7 @@
             "Window001": "0",
             "Door001": "0",
             "Humidifier001": "0",
-            "AirPurifier001": "0",
+            "AirPurifier001": "1",
             "Heater001": "0",
             "Curtain001": "0",
             "Light001": "0"
@@ -118,10 +118,10 @@
         "state": {
             "Noise": "-1",
             "UltravioletLevel": "-2",
-            "Temperature": "0",
+            "Temperature": "-1",
             "Brightness": "-2",
             "Humidity": "0",
-            "AirQuality": "0",
+            "AirQuality": "1",
             "HumanState": "1",
             "HumanCount": "1"
         }
@@ -130,21 +130,21 @@
         "device": {
             "Light001": "0",
             "TV001": "0",
-            "AC001": "0",
+            "AC001": "1",
             "Window001": "0",
-            "Window002": "0",
-            "Door001": "1",
+            "Window002": "1",
+            "Door001": "0",
             "Humidifier001": "0",
-            "AirPurifier001": "0",
+            "AirPurifier001": "1",
             "Heater001": "0",
             "Curtain001": "0"
         },
         "state": {
             "UltravioletLevel": "-2",
-            "Temperature": "-1",
+            "Temperature": "0",
             "Brightness": "1",
             "Humidity": "0",
-            "AirQuality": "0",
+            "AirQuality": "1",
             "HumanState": "1",
             "HumanCount": "2",
             "Noise": "-1"
