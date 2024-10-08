@@ -1,0 +1,36 @@
+[
+  {
+    "id": "#1",
+    "description": "Excessive cold or hot temperatures may lead to health risks.",
+    "violationRule": {
+      "violationState": [
+        {
+          "state": {
+            "location": "LivingRoom/BedRoomOne/BedRoomTwo",
+            "type": "environmental attribute",
+            "category": "Temperature"
+          },
+          "stateValue": "ExcessivelyHot/ExcessivelyCold"
+        },
+        {
+          "state": {
+            "location": "LivingRoom/BedRoomOne/BedRoomTwo",
+            "type": "environmental attribute",
+            "category": "HumanState"
+          },
+          "stateValue": "Detected"
+        }
+      ],
+      "targetState": [
+        {
+          "state": {
+            "location": "LivingRoom/BedRoomOne/BedRoomTwo",
+            "type": "environmental attribute",
+            "category": "Temperature"
+          },
+          "stateValue": "Comfortable"
+        }
+      ]
+    }
+  }
+]

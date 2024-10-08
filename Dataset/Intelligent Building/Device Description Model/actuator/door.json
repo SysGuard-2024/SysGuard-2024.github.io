@@ -1,0 +1,50 @@
+{
+  "@context": "https://www.w3.org/2022/wot/td/v1.1",
+  "id": "device-door-0001",
+  "Category": "Smart Door",
+  "location": "Lab",
+  "securityDefinitions": {
+    "basic_sc": {
+      "scheme": "basic",
+      "description": "Basic authentication scheme."
+    }
+  },
+  "protocol": "Wi-Fi",
+  "Properties": {
+    "status": {
+      "type": "string",
+      "description": "Current status of the door.",
+      "enum": [
+        "open",
+        "closed"
+      ],
+      "readOnly": true
+    }
+  },
+  "Actions": {
+    "Open": {
+      "description": "Open the door",
+      "forms": [
+        {
+          "op": [
+            "invokeaction"
+          ],
+          "href": "https://api.smarthome/devices/device-door-0001/actions/Open",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    "Close": {
+      "description": "Close the door",
+      "forms": [
+        {
+          "op": [
+            "invokeaction"
+          ],
+          "href": "https://api.smarthome/devices/device-door-0001/actions/Close",
+          "contentType": "application/json"
+        }
+      ]
+    }
+  }
+}

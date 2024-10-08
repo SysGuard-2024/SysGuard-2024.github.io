@@ -1,0 +1,36 @@
+[
+  {
+    "id": "#5",
+    "description": "Using a water dispenser in a dark environment may cause burns.",
+    "violationRule": {
+      "violationState": [
+        {
+          "state": {
+            "location": "TeaRoom",
+            "type": "actuator",
+            "category": "WaterDispenser"
+          },
+          "stateValue": "On"
+        },
+        {
+          "state": {
+            "location": "TeaRoom",
+            "type": "environmental attribute",
+            "category": "Brightness"
+          },
+          "stateValue": "Dark"
+        }
+      ],
+      "targetState": [
+        {
+          "state": {
+            "location": "TeaRoom",
+            "type": "environmental attribute",
+            "category": "Brightness"
+          },
+          "stateValue": "Bright"
+        }
+      ]
+    }
+  }
+]

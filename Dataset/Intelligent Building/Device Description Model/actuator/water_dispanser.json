@@ -1,0 +1,49 @@
+{
+  "@context": "https://www.w3.org/2022/wot/td/v1.1",
+  "id": "device-wd-1001",
+  "Category": "Water Dispanser",
+  "location": "TeaRoom",
+  "securityDefinitions": {
+    "basic_sc": {
+      "scheme": "basic",
+      "description": "Basic authentication scheme."
+    }
+  },
+  "protocol": "Wi-Fi",
+  "Properties": {
+    "powerStatus": {
+      "type": "string",
+      "description": "Current power status of the water dispanser.",
+      "enum": [
+        "on",
+        "off"
+      ]
+    }
+  },
+  "Actions": {
+    "TurnOn": {
+      "description": "Turn on the water dispanser",
+      "forms": [
+        {
+          "op": [
+            "invokeaction"
+          ],
+          "href": "https://api.smarthome/devices/device-wd-1001/actions/TurnOn",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    "TurnOff": {
+      "description": "Turn off the water dispanser",
+      "forms": [
+        {
+          "op": [
+            "invokeaction"
+          ],
+          "href": "https://api.smarthome/devices/device-wd-1001/actions/TurnOff",
+          "contentType": "application/json"
+        }
+      ]
+    }
+  }
+}

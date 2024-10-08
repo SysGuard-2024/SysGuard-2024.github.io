@@ -1,0 +1,60 @@
+{
+  "@context": "https://www.w3.org/2022/wot/td/v1.1",
+  "id": "device-ultraviolet-sensor-2024",
+  "Category": "Ultraviolet Sensor",
+  "location": "Living Room",
+  "securityDefinitions": {
+    "basic_sc": {
+      "scheme": "basic",
+      "description": "Basic authentication scheme."
+    }
+  },
+  "protocol": "Wi-Fi",
+  "Properties": {
+    "uvIndex": {
+      "type": "number",
+      "description": "Current Ultraviolet (UV) index.",
+      "readOnly": true,
+      "minimum": 0,
+      "maximum": 15
+    },
+    "exposureRisk": {
+      "type": "string",
+      "description": "Current risk level of overexposure to UV radiation.",
+      "enum": [
+        "ExcessivelyLow",
+        "RelativelyLow",
+        "Moderate",
+        "RelativelyHigh",
+        "ExcessivelyHigh"
+      ],
+      "readOnly": true
+    }
+  },
+  "Events": {
+    "HighUVRisk": {
+      "description": "Emitted when the UV index changed.",
+      "data": {
+        "type": "object",
+        "properties": {
+          "uvIndex": {
+            "type": "number",
+            "description": "The current UV index changed.",
+            "minimum": 0,
+            "maximum": 15
+          },
+          "exposureRisk": {
+            "type": "string",
+            "enum": [
+              "ExcessivelyLow",
+              "RelativelyLow",
+              "Moderate",
+              "RelativelyHigh",
+              "ExcessivelyHigh"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

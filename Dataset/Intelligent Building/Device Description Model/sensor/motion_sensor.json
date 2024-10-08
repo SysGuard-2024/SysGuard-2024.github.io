@@ -1,0 +1,56 @@
+{
+  "@context": "https://www.w3.org/2022/wot/td/v1.1",
+  "id": "device-motion-sensor-2024",
+  "Category": "Motion Sensor",
+  "location": "Lab",
+  "securityDefinitions": {
+    "basic_sc": {
+      "scheme": "basic",
+      "description": "Basic authentication scheme."
+    }
+  },
+  "protocol": "Wi-Fi",
+  "Properties": {
+    "motionDetected": {
+      "type": "boolean",
+      "description": "Indicates if motion has been detected.",
+      "enum": [
+        "detected",
+        "undetected"
+      ],
+      "readOnly": true
+    }
+  },
+  "Events": {
+    "MotionDetected": {
+      "description": "Emitted when motion is detected.",
+      "data": {
+        "type": "object",
+        "properties": {
+          "motionDetected": {
+            "type": "boolean",
+            "const": true
+          },
+          "lastMotion": {
+            "type": "dateTime"
+          }
+        }
+      }
+    },
+    "NoMotion": {
+      "description": "Emitted when no motion is detected for a specified period.",
+      "data": {
+        "type": "object",
+        "properties": {
+          "motionDetected": {
+            "type": "boolean",
+            "const": false
+          },
+          "lastMotion": {
+            "type": "dateTime"
+          }
+        }
+      }
+    }
+  }
+}

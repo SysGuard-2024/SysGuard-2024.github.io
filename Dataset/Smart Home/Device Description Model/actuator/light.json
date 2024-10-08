@@ -1,0 +1,49 @@
+{
+  "@context": "https://www.w3.org/2022/wot/td/v1.1",
+  "id": "device-light-3030",
+  "Category": "Smart Light",
+  "location": "Living Room",
+  "securityDefinitions": {
+    "basic_sc": {
+      "scheme": "basic",
+      "description": "Basic authentication scheme."
+    }
+  },
+  "protocol": "Wi-Fi",
+  "Properties": {
+    "on": {
+      "type": "boolean",
+      "description": "Status of the light.",
+      "enum": [
+        "on",
+        "off"
+      ]
+    }
+  },
+  "Actions": {
+    "TurnOn": {
+      "description": "Turn on the light",
+      "forms": [
+        {
+          "op": [
+            "invokeaction"
+          ],
+          "href": "https://api.smarthome/devices/device-light-3030/actions/TurnOn",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    "TurnOff": {
+      "description": "Turn off the light",
+      "forms": [
+        {
+          "op": [
+            "invokeaction"
+          ],
+          "href": "https://api.smarthome/devices/device-light-3030/actions/TurnOff",
+          "contentType": "application/json"
+        }
+      ]
+    }
+  }
+}

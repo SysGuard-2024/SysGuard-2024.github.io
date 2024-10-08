@@ -1,0 +1,44 @@
+[
+  {
+    "id": "#10",
+    "description": "Using a projector with excessive ambient brightness may cause eyestrain.",
+    "violationRule": {
+      "violationState": [
+        {
+          "state": {
+            "location": "MeetingRoomOne/MeetingRoomTwo",
+            "type": "actuator",
+            "category": "Projector"
+          },
+          "stateValue": "On"
+        },
+        {
+          "state": {
+            "location": "MeetingRoomOne/MeetingRoomTwo",
+            "type": "environmental attribute",
+            "category": "Brightness"
+          },
+          "stateValue": "ExcessivelyBright"
+        },
+        {
+          "state": {
+            "location": "MeetingRoomOne/MeetingRoomTwo",
+            "type": "environmental attribute",
+            "category": "HumanState"
+          },
+          "stateValue": "Detected"
+        }
+      ],
+      "targetState": [
+        {
+          "state": {
+            "location": "Lab/MeetingRoomOne/MeetingRoomTwo",
+            "type": "environmental attribute",
+            "category": "Brightness"
+          },
+          "stateValue": "Dim"
+        }
+      ]
+    }
+  }
+]

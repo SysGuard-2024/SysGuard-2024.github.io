@@ -1,0 +1,62 @@
+{
+  "@context": "https://www.w3.org/2022/wot/td/v1.1",
+  "id": "device-temperature-sensor-2024",
+  "Category": "Temperature Sensor",
+  "location": "Lab",
+  "securityDefinitions": {
+    "basic_sc": {
+      "scheme": "basic",
+      "description": "Basic authentication scheme."
+    }
+  },
+  "protocol": "Wi-Fi",
+  "Properties": {
+    "currentTemperature": {
+      "type": "number",
+      "description": "Current temperature measured in degrees Celsius.",
+      "unit": "°C",
+      "readOnly": true,
+      "minimum": 0,
+      "maximum": 50
+    },
+    "status": {
+      "type": "string",
+      "description": "Current operational status of the sensor.",
+      "enum": [
+        "ExcessivelyCold",
+        "Cold",
+        "Comfortable",
+        "Warm",
+        "ExcessivelyHot"
+      ],
+      "readOnly": true
+    }
+  },
+  "Events": {
+    "TemperatureChange": {
+      "description": "Emitted when the temperature changed.",
+      "data": {
+        "type": "object",
+        "properties": {
+          "currentTemperature": {
+            "type": "number",
+            "description": "The current temperature changed.",
+            "unit": "°C",
+            "minimum": 0,
+            "maximum": 50
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ExcessivelyCold",
+              "Cold",
+              "Comfortable",
+              "Warm",
+              "ExcessivelyHot"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

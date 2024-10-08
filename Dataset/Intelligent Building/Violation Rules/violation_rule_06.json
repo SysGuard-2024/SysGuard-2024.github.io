@@ -1,0 +1,36 @@
+[
+  {
+    "id": "#6",
+    "description": "Excessive environmental noise may cause hearing damage.",
+    "violationRule": {
+      "violationState": [
+        {
+          "state": {
+            "location": "Lab/MeetingRoomOne/MeetingRoomTwo",
+            "type": "environmental attribute",
+            "category": "Noise"
+          },
+          "stateValue": "ExcessivelyNoisy"
+        },
+        {
+          "state": {
+            "location": "Lab/MeetingRoomOne/MeetingRoomTwo",
+            "type": "environmental attribute",
+            "category": "HumanState"
+          },
+          "stateValue": "Detected"
+        }
+      ],
+      "targetState": [
+        {
+          "state": {
+            "location": "Lab/MeetingRoomOne/MeetingRoomTwo",
+            "type": "environmental attribute",
+            "category": "Noise"
+          },
+          "stateValue": "ComfortableSilence"
+        }
+      ]
+    }
+  }
+]

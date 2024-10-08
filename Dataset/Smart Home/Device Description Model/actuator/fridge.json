@@ -1,0 +1,50 @@
+{
+  "@context": "https://www.w3.org/2022/wot/td/v1.1",
+  "id": "device-fridge-2023",
+  "Category": "Smart Fridge",
+  "location": "Kitchen",
+  "securityDefinitions": {
+    "basic_sc": {
+      "scheme": "basic",
+      "description": "Basic authentication scheme."
+    }
+  },
+  "protocol": "Wi-Fi",
+  "Properties": {
+    "doorStatus": {
+      "type": "string",
+      "description": "Status of the fridge door.",
+      "enum": [
+        "open",
+        "closed"
+      ],
+      "readOnly": true
+    }
+  },
+  "Actions": {
+    "TurnOn": {
+      "description": "Turn on the fridge",
+      "forms": [
+        {
+          "op": [
+            "invokeaction"
+          ],
+          "href": "https://api.smarthome/devices/device-fridge-2023/actions/TurnOn",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    "TurnOff": {
+      "description": "Turn off the fridge",
+      "forms": [
+        {
+          "op": [
+            "invokeaction"
+          ],
+          "href": "https://api.smarthome/devices/device-fridge-2023/actions/TurnOff",
+          "contentType": "application/json"
+        }
+      ]
+    }
+  }
+}

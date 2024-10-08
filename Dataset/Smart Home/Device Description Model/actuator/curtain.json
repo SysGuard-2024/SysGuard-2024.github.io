@@ -1,0 +1,50 @@
+{
+  "@context": "https://www.w3.org/2022/wot/td/v1.1",
+  "id": "device-curtain-001",
+  "Category": "Smart Curtain",
+  "location": "Living Room",
+  "securityDefinitions": {
+    "basic_sc": {
+      "scheme": "basic",
+      "description": "Basic authentication scheme."
+    }
+  },
+  "protocol": "Wi-Fi",
+  "Properties": {
+    "status": {
+      "type": "string",
+      "description": "Current status of the curtain.",
+      "enum": [
+        "open",
+        "closed"
+      ],
+      "readOnly": true
+    }
+  },
+  "Actions": {
+    "Open": {
+      "description": "Open the curtain",
+      "forms": [
+        {
+          "op": [
+            "invokeaction"
+          ],
+          "href": "https://api.smarthome/devices/device-curtain-001/actions/Open",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    "Close": {
+      "description": "Close the curtain",
+      "forms": [
+        {
+          "op": [
+            "invokeaction"
+          ],
+          "href": "https://api.smarthome/devices/device-curtain-001/actions/Close",
+          "contentType": "application/json"
+        }
+      ]
+    }
+  }
+}

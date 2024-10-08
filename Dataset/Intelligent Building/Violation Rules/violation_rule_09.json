@@ -1,0 +1,36 @@
+[
+  {
+    "id": "#9",
+    "description": "Excessive dryness or humidity in the environment may lead to respiratory problems.",
+    "violationRule": {
+      "violationState": [
+        {
+          "state": {
+            "location": "Lab/MeetingRoomOne/MeetingRoomTwo",
+            "type": "environmental attribute",
+            "category": "Humidity"
+          },
+          "stateValue": "ExcessivelyHumid/ExtremelyDry"
+        },
+        {
+          "state": {
+            "location": "Lab/MeetingRoomOne/MeetingRoomTwo",
+            "type": "environmental attribute",
+            "category": "HumanState"
+          },
+          "stateValue": "Detected"
+        }
+      ],
+      "targetState": [
+        {
+          "state": {
+            "location": "Lab/MeetingRoomOne/MeetingRoomTwo",
+            "type": "environmental attribute",
+            "category": "Humidity"
+          },
+          "stateValue": "ComfortableHumidity"
+        }
+      ]
+    }
+  }
+]

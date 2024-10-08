@@ -1,0 +1,50 @@
+{
+  "context": "https://www.w3.org/2022/wot/td/v1.1",
+  "id": "device-ac-5678",
+  "Category": "Smart Air Conditioner",
+  "location": "Living Room",
+  "securityDefinitions": {
+    "basic_sc": {
+      "scheme": "basic",
+      "description": "Basic authentication scheme."
+    }
+  },
+  "protocol": "Wi-Fi",
+  "Properties": {
+    "power": {
+      "type": "string",
+      "description": "Working state of the air conditioner.",
+      "enum": [
+        "on",
+        "off"
+      ],
+      "readOnly": true
+    }
+  },
+  "Actions": {
+    "TurnOn": {
+      "description": "Turn on the air conditioner",
+      "forms": [
+        {
+          "op": [
+            "invokeaction"
+          ],
+          "href": "https://api.smarthome/devices/device-ac-5678/actions/TurnOn",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    "TurnOff": {
+      "description": "Turn off the air conditioner",
+      "forms": [
+        {
+          "op": [
+            "invokeaction"
+          ],
+          "href": "https://api.smarthome/devices/device-ac-5678/actions/TurnOff",
+          "contentType": "application/json"
+        }
+      ]
+    }
+  }
+}

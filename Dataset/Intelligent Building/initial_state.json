@@ -1,0 +1,123 @@
+{
+    "MeetingRoomOne": {
+        "device": {
+            "Light001": "0",
+            "AC001": "1",
+            "Window001": "0",
+            "Door001": "0",
+            "Humidifier001": "0",
+            "AirPurifier001": "1",
+            "Projecter001": "0",
+            "Heater001": "0",
+            "Curtain001": "1"
+        },
+        "state": {
+            "UltravioletLevel": "-2",
+            "Temperature": "-2",
+            "Brightness": "1",
+            "Humidity": "2",
+            "Noise": "-1",
+            "AirQuality": "1",
+            "HumanState": "0",
+            "HumanCount": "0"
+        }
+    },
+    "MeetingRoomTwo": {
+        "device": {
+            "Light001": "0",
+            "AC001": "1",
+            "Window001": "0",
+            "Door001": "0",
+            "Humidifier001": "0",
+            "AirPurifier001": "1",
+            "Projecter001": "0",
+            "Heater001": "0",
+            "Curtain001": "1"
+        },
+        "state": {
+            "UltravioletLevel": "-2",
+            "Temperature": "-2",
+            "Brightness": "1",
+            "Humidity": "1",
+            "Noise": "-1",
+            "AirQuality": "1",
+            "HumanState": "0",
+            "HumanCount": "0"
+        }
+    },
+    "TeaRoom": {
+        "device": {
+            "Light001": "0",
+            "Window001": "0",
+            "Door001": "0",
+            "WaterDispenser001": "0",
+            "Curtain001": "0",
+            "MicrowaveOven001": "0"
+        },
+        "state": {
+            "Temperature": "2",
+            "Brightness": "-2",
+            "Humidity": "0",
+            "Noise": "-1",
+            "AirQuality": "0",
+            "HumanState": "0",
+            "HumanCount": "0"
+        }
+    },
+    "Corridor": {
+        "device": {
+            "Door001": "0",
+            "Light001": "0",
+            "Speaker001": "0"
+        },
+        "state": {
+            "EnergyConsumption": "0",
+            "Temperature": "1",
+            "Brightness": "-2",
+            "Humidity": "0",
+            "Noise": "-1",
+            "AirQuality": "0",
+            "HumanState": "0",
+            "HumanCount": "0"
+        }
+    },
+    "Context": {
+        "device": {},
+        "state": {
+            "Temperature": "0",
+            "UltravioletLevel": "-2",
+            "Brightness": "-2",
+            "Humidity": "0",
+            "AirQuality": "0",
+            "Weather": "cloudy"
+        }
+    },
+    "Lab": {
+        "device": {
+            "Window002": "0",
+            "Door001": "0",
+            "Humidifier001": "0",
+            "AirPurifier001": "0",
+            "Printer001": "0",
+            "Heater001": "0",
+            "Curtain001": "1",
+            "Curtain002": "1",
+            "Light001": "0",
+            "Light002": "0",
+            "Light003": "0",
+            "Light004": "0",
+            "AC001": "0",
+            "Window001": "0"
+        },
+        "state": {
+            "UltravioletLevel": "-2",
+            "Temperature": "1",
+            "Brightness": "0",
+            "Humidity": "0",
+            "Noise": "-1",
+            "AirQuality": "1",
+            "HumanState": "0",
+            "HumanCount": "0"
+        }
+    }
+}

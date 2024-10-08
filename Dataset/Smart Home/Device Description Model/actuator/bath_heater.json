@@ -1,0 +1,79 @@
+{
+  "@context": "https://www.w3.org/2022/wot/td/v1.1",
+  "id": "device-bh-1234",
+  "Category": "Smart Bath Heater",
+  "location": "Bathroom",
+  "securityDefinitions": {
+    "basic_sc": {
+      "scheme": "basic",
+      "description": "Basic authentication scheme."
+    }
+  },
+  "protocol": "Wi-Fi",
+  "Properties": {
+    "power": {
+      "type": "string",
+      "description": "Working state of the bath heater.",
+      "enum": [
+        "on",
+        "off"
+      ],
+      "readOnly": true
+    },
+    "temperature": {
+      "type": "integer",
+      "description": "Current temperature of the bath heater.",
+      "readOnly": true
+    }
+  },
+  "Actions": {
+    "TurnOn": {
+      "description": "Turn on the bath heater",
+      "forms": [
+        {
+          "op": [
+            "invokeaction"
+          ],
+          "href": "https://api.smarthome/devices/device-bh-1234/actions/TurnOn",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    "TurnOff": {
+      "description": "Turn off the bath heater",
+      "forms": [
+        {
+          "op": [
+            "invokeaction"
+          ],
+          "href": "https://api.smarthome/devices/device-bh-1234/actions/TurnOff",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    "SetTemperature": {
+      "description": "Set the desired temperature for the bath heater",
+      "forms": [
+        {
+          "op": [
+            "invokeaction"
+          ],
+          "href": "https://api.smarthome/devices/device-bh-1234/actions/SetTemperature",
+          "contentType": "application/json"
+        }
+      ],
+      "input": {
+        "type": "object",
+        "properties": {
+          "desiredTemperature": {
+            "type": "integer",
+            "description": "The desired temperature to set."
+          }
+        },
+        "required": [
+          "desiredTemperature"
+        ]
+      }
+    }
+  }
+}

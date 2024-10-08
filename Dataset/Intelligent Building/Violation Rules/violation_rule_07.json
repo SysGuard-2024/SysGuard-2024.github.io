@@ -1,0 +1,28 @@
+[
+  {
+    "id": "#7",
+    "description": "Poor air quality may lead to respiratory damage.",
+    "violationRule": {
+      "violationState": [
+        {
+          "state": {
+            "location": "Lab/MeetingRoomOne/MeetingRoomTwo",
+            "type": "environmental attribute",
+            "category": "AirQuality"
+          },
+          "stateValue": "SeverePollution"
+        }
+      ],
+      "targetState": [
+        {
+          "state": {
+            "location": "Lab/MeetingRoomOne/MeetingRoomTwo",
+            "type": "environmental attribute",
+            "category": "AirQuality"
+          },
+          "stateValue": "Good"
+        }
+      ]
+    }
+  }
+]

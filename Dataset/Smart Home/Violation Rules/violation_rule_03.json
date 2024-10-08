@@ -1,0 +1,28 @@
+[
+  {
+    "id": "#3",
+    "description": "Excessive circuit loading may cause safety problems.",
+    "violationRule": {
+      "violationState": [
+        {
+          "state": {
+            "location": "LivingRoom",
+            "type": "actuator",
+            "category": "Wattmeter"
+          },
+          "stateValue": "ExcessivelyHigh"
+        }
+      ],
+      "targetState": [
+        {
+          "state": {
+            "location": "LivingRoom",
+            "type": "actuator",
+            "category": "Wattmeter"
+          },
+          "stateValue": "Standard"
+        }
+      ]
+    }
+  }
+]

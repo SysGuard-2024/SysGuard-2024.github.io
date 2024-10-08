@@ -1,0 +1,28 @@
+[
+  {
+    "id": "#8",
+    "description": "High levels of carbon monoxide in the environment may cause life-threatening injuries.",
+    "violationRule": {
+      "violationState": [
+        {
+          "state": {
+            "location": "LivingRoom/BedRoomOne/BedRoomTwo/kitchen",
+            "type": "environmental attribute",
+            "category": "COLevel"
+          },
+          "stateValue": "ExcessivelyHigh"
+        }
+      ],
+      "targetState": [
+        {
+          "state": {
+            "location": "LivingRoom/BedRoomOne/BedRoomTwo/kitchen",
+            "type": "environmental attribute",
+            "category": "COLevel"
+          },
+          "stateValue": "Acceptable"
+        }
+      ]
+    }
+  }
+]

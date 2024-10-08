@@ -1,0 +1,56 @@
+{
+  "@context": "https://www.w3.org/2022/wot/td/v1.1",
+  "id": "device-brightness-sensor-2024",
+  "Category": "Brightness Sensor",
+  "location": "Living Room",
+  "securityDefinitions": {
+    "basic_sc": {
+      "scheme": "basic",
+      "description": "Basic authentication scheme."
+    }
+  },
+  "protocol": "Wi-Fi",
+  "Properties": {
+    "lux": {
+      "type": "number",
+      "description": "Current illuminance measured in lux.",
+      "readOnly": true,
+      "unit": "lux"
+    },
+    "ambientLight": {
+      "type": "string",
+      "description": "Description of the ambient light conditions.",
+      "enum": [
+        "Dark",
+        "ComfortableBrightness",
+        "ExcessivelyBright",
+        "Dim"
+      ],
+      "readOnly": true
+    }
+  },
+  "Events": {
+    "BrightnessChange": {
+      "description": "Emitted when the brightness changed.",
+      "data": {
+        "type": "object",
+        "properties": {
+          "currentTemperature": {
+            "type": "number",
+            "description": "The current brightness changed.",
+            "unit": "lux"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "Dark",
+              "ComfortableBrightness",
+              "ExcessivelyBright",
+              "Dim"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "@context": "https://www.w3.org/2022/wot/td/v1.1",
+  "id": "device-air-quality-sensor-2024",
+  "Category": "Air Quality Sensor",
+  "location": "Lab",
+  "securityDefinitions": {
+    "basic_sc": {
+      "scheme": "basic",
+      "description": "Basic authentication scheme."
+    }
+  },
+  "protocol": "Wi-Fi",
+  "Properties": {
+    "airQualityIndex": {
+      "type": "string",
+      "description": "Overall Air Quality Index.",
+      "enum": [
+        "SeverePollution",
+        "Poor",
+        "Good",
+        "Excellent"
+      ],
+      "readOnly": true
+    }
+  },
+  "Events": {
+    "AirQualityAlert": {
+      "description": "Emitted when the air quality index indicates poor conditions.",
+      "data": {
+        "type": "object",
+        "properties": {
+          "airQualityIndex": {
+            "type": "string",
+            "enum": [
+              "SeverePollution",
+              "Poor",
+              "Good",
+              "Excellent"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

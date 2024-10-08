@@ -1,0 +1,58 @@
+{
+  "@context": "https://www.w3.org/2022/wot/td/v1.1",
+  "id": "device-co-sensor-2024",
+  "Category": "CO Sensor",
+  "location": "Kitchen",
+  "securityDefinitions": {
+    "basic_sc": {
+      "scheme": "basic",
+      "description": "Basic authentication scheme."
+    }
+  },
+  "protocol": "Wi-Fi",
+  "Properties": {
+    "coLevel": {
+      "type": "number",
+      "description": "Current level of carbon monoxide (CO) in the air.",
+      "unit": "ppm",
+      "readOnly": true,
+      "minimum": 0,
+      "maximum": 200
+    },
+    "status": {
+      "type": "string",
+      "description": "Current operational status of the sensor.",
+      "enum": [
+        "ExcessivelyHigh",
+        "Acceptable",
+        "Excellent"
+      ],
+      "readOnly": true
+    }
+  },
+  "Events": {
+    "COChange": {
+      "description": "Emitted when the CO level changed.",
+      "data": {
+        "type": "object",
+        "properties": {
+          "coLevel": {
+            "type": "number",
+            "description": "Level of CO that triggered the alert.",
+            "unit": "ppm",
+            "minimum": 0,
+            "maximum": 200
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ExcessivelyHigh",
+              "Acceptable",
+              "Excellent"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

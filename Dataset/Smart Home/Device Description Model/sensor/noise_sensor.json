@@ -1,0 +1,56 @@
+{
+  "@context": "https://www.w3.org/2022/wot/td/v1.1",
+  "id": "device-noise-sensor-2024",
+  "Category": "Noise Sensor",
+  "location": "Living Room",
+  "securityDefinitions": {
+    "basic_sc": {
+      "scheme": "basic",
+      "description": "Basic authentication scheme."
+    }
+  },
+  "protocol": "Wi-Fi",
+  "Properties": {
+    "currentNoiseLevel": {
+      "type": "number",
+      "description": "Current noise level measured in decibels (dB).",
+      "unit": "dB",
+      "readOnly": true
+    },
+    "status": {
+      "type": "string",
+      "description": "Current operational status of the sensor.",
+      "enum": [
+        "Quiet",
+        "ComfortableSilence",
+        "Noisy",
+        "ExcessivelyNoisy"
+      ],
+      "readOnly": true
+    }
+  },
+  "Events": {
+    "NoiseLevelChange": {
+      "description": "Emitted when the noise level changed.",
+      "data": {
+        "type": "object",
+        "properties": {
+          "currentNoiseLevel": {
+            "type": "number",
+            "description": "The current noise level changed.",
+            "unit": "dB"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "Quiet",
+              "ComfortableSilence",
+              "Noisy",
+              "ExcessivelyNoisy"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

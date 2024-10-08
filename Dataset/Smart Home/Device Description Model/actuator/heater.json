@@ -1,0 +1,49 @@
+{
+  "@context": "https://www.w3.org/2022/wot/td/v1.1",
+  "id": "device-heater-1001",
+  "Category": "Smart Heater",
+  "location": "Living Room",
+  "securityDefinitions": {
+    "basic_sc": {
+      "scheme": "basic",
+      "description": "Basic authentication scheme."
+    }
+  },
+  "protocol": "Wi-Fi",
+  "Properties": {
+    "powerStatus": {
+      "type": "string",
+      "description": "Current power status of the heater.",
+      "enum": [
+        "on",
+        "off"
+      ]
+    }
+  },
+  "Actions": {
+    "TurnOn": {
+      "description": "Turn on the heater",
+      "forms": [
+        {
+          "op": [
+            "invokeaction"
+          ],
+          "href": "https://api.smarthome/devices/device-heater-1001/actions/TurnOn",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    "TurnOff": {
+      "description": "Turn off the heater",
+      "forms": [
+        {
+          "op": [
+            "invokeaction"
+          ],
+          "href": "https://api.smarthome/devices/device-heater-1001/actions/TurnOff",
+          "contentType": "application/json"
+        }
+      ]
+    }
+  }
+}

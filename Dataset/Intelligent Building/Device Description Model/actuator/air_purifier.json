@@ -1,0 +1,50 @@
+{
+  "context": "https://www.w3.org/2022/wot/td/v1.1",
+  "id": "device-ap-1234",
+  "Category": "Smart Air Purifier",
+  "location": "Meeting Room",
+  "securityDefinitions": {
+    "basic_sc": {
+      "scheme": "basic",
+      "description": "Basic authentication scheme."
+    }
+  },
+  "protocol": "Wi-Fi",
+  "Properties": {
+    "power": {
+      "type": "string",
+      "description": "Working state of the air purifier.",
+      "enum": [
+        "on",
+        "off"
+      ],
+      "readOnly": true
+    }
+  },
+  "Actions": {
+    "TurnOn": {
+      "description": "Turn on the air purifier",
+      "forms": [
+        {
+          "op": [
+            "invokeaction"
+          ],
+          "href": "https://api.smarthome/devices/device-ap-1234/actions/TurnOn",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    "TurnOff": {
+      "description": "Turn off the air purifier",
+      "forms": [
+        {
+          "op": [
+            "invokeaction"
+          ],
+          "href": "https://api.smarthome/devices/device-ap-1234/actions/TurnOff",
+          "contentType": "application/json"
+        }
+      ]
+    }
+  }
+}

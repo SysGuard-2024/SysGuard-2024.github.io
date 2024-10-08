@@ -1,0 +1,79 @@
+{
+  "@context": "https://www.w3.org/2022/wot/td/v1.1",
+  "id": "device-cooker-hood-1234",
+  "Category": "Cooker Hood",
+  "location": "Kitchen",
+  "securityDefinitions": {
+    "basic_sc": {
+      "scheme": "basic",
+      "description": "Basic authentication scheme."
+    }
+  },
+  "protocol": "Wi-Fi",
+  "Properties": {
+    "status": {
+      "type": "string",
+      "description": "Current status of the cooker hood.",
+      "enum": [
+        "on",
+        "off"
+      ],
+      "readOnly": true
+    },
+    "speed": {
+      "type": "integer",
+      "description": "Current fan speed of the cooker hood.",
+      "minimum": 1,
+      "maximum": 5,
+      "readOnly": true
+    }
+  },
+  "Actions": {
+    "Start": {
+      "description": "Start the cooker hood at a specified speed",
+      "forms": [
+        {
+          "op": [
+            "invokeaction"
+          ],
+          "href": "https://api.smarthome/devices/device-cooker-hood-1234/actions/Start",
+          "contentType": "application/json",
+          "http": {
+            "method": "POST"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "speed": {
+                "type": "integer",
+                "description": "Fan speed to start the cooker hood with.",
+                "enum": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ]
+              }
+            },
+            "required": [
+              "speed"
+            ]
+          }
+        }
+      ]
+    },
+    "Stop": {
+      "description": "Stop the cooker hood",
+      "forms": [
+        {
+          "op": [
+            "invokeaction"
+          ],
+          "href": "https://api.smarthome/devices/device-cooker-hood-1234/actions/Stop",
+          "contentType": "application/json"
+        }
+      ]
+    }
+  }
+}

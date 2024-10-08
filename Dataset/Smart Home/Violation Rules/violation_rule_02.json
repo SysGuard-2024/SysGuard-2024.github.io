@@ -1,0 +1,36 @@
+[
+  {
+    "id": "#2",
+    "description": "Excessive ultraviolet radiation may cause skin damage.",
+    "violationRule": {
+      "violationState": [
+        {
+          "state": {
+            "location": "LivingRoom/BedRoomOne/BedRoomTwo",
+            "type": "environmental attribute",
+            "category": "UltravioletLevel"
+          },
+          "stateValue": "ExcessivelyHigh"
+        },
+        {
+          "state": {
+            "location": "LivingRoom/BedRoomOne/BedRoomTwo",
+            "type": "environmental attribute",
+            "category": "HumanState"
+          },
+          "stateValue": "Detected"
+        }
+      ],
+      "targetState": [
+        {
+          "state": {
+            "location": "LivingRoom/BedRoomOne/BedRoomTwo",
+            "type": "environmental attribute",
+            "category": "UltravioletLevel"
+          },
+          "stateValue": "Moderate"
+        }
+      ]
+    }
+  }
+]

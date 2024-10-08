@@ -1,0 +1,92 @@
+[
+  {
+    "id": "#4",
+    "description": "Unoccupied rooms with high brightness and open curtains may expose the privacy of the home.",
+    "violationRule": {
+      "violationState": [
+        {
+          "state": {
+            "location": "LivingRoom/BedRoomOne/BedRoomTwo",
+            "type": "environmental attribute",
+            "category": "Brightness"
+          },
+          "stateValue": "ExcessivelyBright"
+        },
+        {
+          "state": {
+            "location": "LivingRoom/BedRoomOne/BedRoomTwo",
+            "type": "actuator",
+            "category": "Curtain"
+          },
+          "stateValue": "Open"
+        },
+        {
+          "state": {
+            "location": "LivingRoom",
+            "type": "environmental attribute",
+            "category": "HumanState"
+          },
+          "stateValue": "Undetected"
+        },
+        {
+          "state": {
+            "location": "BedRoomOne",
+            "type": "environmental attribute",
+            "category": "HumanState"
+          },
+          "stateValue": "Undetected"
+        },
+        {
+          "state": {
+            "location": "BedRoomTwo",
+            "type": "environmental attribute",
+            "category": "HumanState"
+          },
+          "stateValue": "Undetected"
+        },
+        {
+          "state": {
+            "location": "Kitchen",
+            "type": "environmental attribute",
+            "category": "HumanState"
+          },
+          "stateValue": "Undetected"
+        },
+        {
+          "state": {
+            "location": "Balcony",
+            "type": "environmental attribute",
+            "category": "HumanState"
+          },
+          "stateValue": "Undetected"
+        },
+        {
+          "state": {
+            "location": "Bathroom",
+            "type": "environmental attribute",
+            "category": "HumanState"
+          },
+          "stateValue": "Undetected"
+        },
+        {
+          "state": {
+            "location": "Cloakroom",
+            "type": "environmental attribute",
+            "category": "HumanState"
+          },
+          "stateValue": "Undetected"
+        }
+      ],
+      "targetState": [
+        {
+          "state": {
+            "location": "LivingRoom/BedRoomOne/BedRoomTwo",
+            "type": "actuator",
+            "category": "Curtain"
+          },
+          "stateValue": "Close"
+        }
+      ]
+    }
+  }
+]

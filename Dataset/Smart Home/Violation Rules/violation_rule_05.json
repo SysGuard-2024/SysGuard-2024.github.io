@@ -1,0 +1,36 @@
+[
+  {
+    "id": "#5",
+    "description": "Using a gas stove or water dispenser in a dark environment may cause burns.",
+    "violationRule": {
+      "violationState": [
+        {
+          "state": {
+            "location": "Kitchen",
+            "type": "actuator",
+            "category": "GasStove/WaterDispenser"
+          },
+          "stateValue": "On"
+        },
+        {
+          "state": {
+            "location": "Kitchen",
+            "type": "environmental attribute",
+            "category": "Brightness"
+          },
+          "stateValue": "Dark"
+        }
+      ],
+      "targetState": [
+        {
+          "state": {
+            "location": "Kitchen",
+            "type": "environmental attribute",
+            "category": "Brightness"
+          },
+          "stateValue": "Bright"
+        }
+      ]
+    }
+  }
+]

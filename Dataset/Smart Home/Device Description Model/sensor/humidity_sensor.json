@@ -1,0 +1,60 @@
+{
+  "@context": "https://www.w3.org/2022/wot/td/v1.1",
+  "id": "device-humidity-sensor-2024",
+  "Category": "Humidity Sensor",
+  "location": "Living Room",
+  "securityDefinitions": {
+    "basic_sc": {
+      "scheme": "basic",
+      "description": "Basic authentication scheme."
+    }
+  },
+  "protocol": "Wi-Fi",
+  "Properties": {
+    "currentHumidity": {
+      "type": "number",
+      "description": "Current relative humidity level.",
+      "unit": "%",
+      "readOnly": true,
+      "minimum": 0,
+      "maximum": 100
+    },
+    "status": {
+      "type": "string",
+      "description": "Current operational status of the sensor.",
+      "enum": [
+        "ExtremelyDry",
+        "ComfortableHumidity",
+        "Moist",
+        "ExcessivelyHumid"
+      ],
+      "readOnly": true
+    }
+  },
+  "Events": {
+    "HumidityAlert": {
+      "description": "Emitted when the humidity level is outside of a predefined comfortable range.",
+      "data": {
+        "type": "object",
+        "properties": {
+          "currentHumidity": {
+            "type": "number",
+            "description": "The humidity level that triggered the alert.",
+            "unit": "%",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ExtremelyDry",
+              "ComfortableHumidity",
+              "Moist",
+              "ExcessivelyHumid"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
