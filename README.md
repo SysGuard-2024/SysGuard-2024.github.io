@@ -54,6 +54,3 @@ Additionally, we also provide the example violation rules constructed for the te
 Example violation rules in smart home WoT system: [LINK](https://github.com/SysGuard-2024/SysGuard-2024.github.io/blob/master/Dataset/Smart%20Home/Violation%20Rules/)  
 Example violation rules in intelligent building WoT system: [LINK](https://github.com/SysGuard-2024/SysGuard-2024.github.io/blob/master/Dataset/Intelligent%20Building/Violation%20Rules/)
 
-## [Code](https://github.com/SysGuard-2024/SysGuard-2024.github.io/blob/master/Code/SysGuard)
-
-The source code of SysGuard is provided to support future research efforts.
